@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: skilltrai
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn skilltrai.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: false
