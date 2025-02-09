@@ -59,5 +59,8 @@ const ModernLandingPage = () => {
     </div>
   );
 };
-
+ReactDOM.render(
+  <ModernLandingPage />,
+  document.getElementById('root')
+);
 export default ModernLandingPage;
