@@ -5,6 +5,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-key')
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
+# Add this line - it was missing
+ROOT_URLCONF = 'skilltrai.urls'
+
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -26,11 +31,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Add TEMPLATES configuration
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -43,8 +47,8 @@ TEMPLATES = [
     },
 ]
 
-# Update ALLOWED_HOSTS for Vercel
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+WSGI_APPLICATION = 'skilltrai.wsgi.application'
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static')]
