@@ -4,6 +4,13 @@
     {
       "src": "skilltrai/wsgi.py",
       "use": "@vercel/python"
+    },
+    {
+      "src": "build_static.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles"
+      }
     }
   ],
   "routes": [
