@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +33,7 @@
                     <nav className="fixed w-full bg-black/20 backdrop-blur-md z-50">
                         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                             <div className="flex items-center space-x-2">
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 0C7.168 0 0 7.168 0 16C0 24.832 7.168 32 16 32C24.832 32 32 24.832 32 16C32 7.168 24.832 0 16 0ZM8.112 9.472H13.104V15.104H15.968V9.472H20.928V22.496H15.968V17.728H13.104V22.496H8.112V9.472Z" fill="white"/>
-                                </svg>
+                                <img src="{% static 'images/logo.png' %}" alt="SkillTrai Logo" className="w-8 h-8" />
                                 <span className="text-white text-xl font-medium">SkillTrai</span>
                             </div>
 
