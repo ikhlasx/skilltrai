@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillTrai - Courses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // Navigation component
+        const Navigation = () => (
+            <nav className="fixed w-full bg-black/20 backdrop-blur-md z-50">
+                <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <div className="flex items-center space-x-2">
+                        <div className="w-8 h-8 bg-purple-600 rounded-full"></div>
+                        <span className="text-white text-xl font-medium">SkillTrai</span>
+                    </div>
+                    <div className="flex items-center space-x-8">
+                        <a href="/" className="text-gray-300 hover:text-white">Home</a>
+                        <a href="/courses" className="text-white">Courses</a>
+                        <button className="text-gray-300 hover:text-white">Trainers</button>
+                        <button className="text-gray-300 hover:text-white">Events</button>
+                        <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
+                            Let's Talk
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        );
+
+        // Course Brochure Component
+        const CourseBrochure = () => {
+          const [activeTab, setActiveTab] = useState('overview');
+
+          const courses = [
+            {
+              id: 'design',
+              title: 'Design & Digital Marketing',
+              icon: '🎨',
+              description: 'Master the art of visual communication and digital marketing strategies to create compelling brand experiences.',
+              skills: ['UI/UX Design', 'Graphic Design', 'Social Media Marketing', 'SEO', 'Content Strategy'],
+              duration: '16 weeks',
+              level: 'Beginner to Advanced',
+              projects: 'Portfolio of 5+ real-world projects',
+              career: 'Digital Designer, Marketing Specialist, Brand Manager'
+            },
+            {
+              id: 'ai-dev',
+              title: 'AI Developer',
+              icon: '🤖',
+              description: 'Learn to develop AI-powered applications and solutions using modern frameworks and methodologies.',
+              skills: ['Python', 'Machine Learning', 'Neural Networks', 'Natural Language Processing', 'Computer Vision'],
+              duration: '24 weeks',
+              level: 'Intermediate',
+              projects: '3 capstone projects including a deployable AI application',
+              career: 'AI Developer, ML Engineer, Software Engineer'
+            },
+            {
+              id: 'ai-eng',
+              title: 'AI Engineer',
+              icon: '⚙️',
+              description: 'Dive deep into AI engineering principles to design, implement and optimize complex AI systems.',
+              skills: ['Advanced ML Algorithms', 'Deep Learning', 'Model Deployment', 'MLOps', 'AI Ethics'],
+              duration: '32 weeks',
+              level: 'Advanced',
+              projects: 'Enterprise-grade AI system with deployment pipeline',
+              career: 'AI Engineer, Research Scientist, Technical Lead'
+            },
+            {
+              id: 'data',
+              title: 'Data Analysis',
+              icon: '📊',
+              description: 'Transform raw data into actionable insights through statistical analysis and visualization techniques.',
+              skills: ['Data Wrangling', 'Statistical Analysis', 'Data Visualization', 'SQL', 'Business Intelligence'],
+              duration: '20 weeks',
+              level: 'Beginner to Intermediate',
+              projects: 'Industry-specific data analysis portfolio',
+              career: 'Data Analyst, Business Analyst, BI Specialist'
+            },
+            {
+              id: 'robotics',
+              title: 'Robotics and IoT',
+              icon: '🦾',
+              description: 'Build smart physical systems by combining hardware engineering with software intelligence.',
+              skills: ['Embedded Systems', 'Sensor Integration', 'Control Systems', 'IoT Protocols', 'Robotics Design'],
+              duration: '28 weeks',
+              level: 'Intermediate to Advanced',
+              projects: 'Functional robotics prototype and IoT ecosystem',
+              career: 'Robotics Engineer, IoT Developer, Automation Specialist'
+            }
+          ];
+
+          const [hoveredCourse, setHoveredCourse] = useState(null);
+
+          return (
+            <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/30 to-black text-white p-6">
+              <div className="max-w-6xl mx-auto">
+                {/* Header */}
+                <div className="text-center mb-16 pt-20">
+                  <div className="inline-flex items-center bg-purple-900/30 rounded-full px-5 py-2 mb-6">
+                    <span className="text-sm font-medium text-purple-400">COURSE CATALOG</span>
+                  </div>
+                  <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                    <span className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
+                      Future-Ready Skills
+                    </span>
+                  </h1>
+                  <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Comprehensive courses designed to transform beginners into industry-ready professionals
+                    through hands-on projects and expert mentorship.
+                  </p>
+                </div>
+
+                {/* Navigation Tabs */}
+                <div className="flex justify-center mb-12">
+                  <div className="bg-black/40 backdrop-blur-lg rounded-full p-1 inline-flex">
+                    <button
+                      onClick={() => setActiveTab('overview')}
+                      className={`px-6 py-3 rounded-full text-sm font-medium transition ${
+                        activeTab === 'overview' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      Overview
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('curriculum')}
+                      className={`px-6 py-3 rounded-full text-sm font-medium transition ${
+                        activeTab === 'curriculum' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      Curriculum
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('careers')}
+                      className={`px-6 py-3 rounded-full text-sm font-medium transition ${
+                        activeTab === 'careers' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      Career Paths
+                    </button>
+                  </div>
+                </div>
+
+                {/* Course Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                  {courses.map((course) => (
+                    <div
+                      key={course.id}
+                      className="bg-gradient-to-br from-gray-900 to-black border border-purple-900/30 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-600/20 hover:scale-105"
+                      onMouseEnter={() => setHoveredCourse(course.id)}
+                      onMouseLeave={() => setHoveredCourse(null)}
+                    >
+                      <div className="p-6">
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="text-4xl mb-4">{course.icon}</div>
+                          <span className="bg-purple-900/40 text-purple-300 text-xs px-3 py-1 rounded-full">
+                            {course.duration}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
+                        <p className="text-gray-400 text-sm mb-6">{course.description}</p>
+
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Key Skills</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {course.skills.slice(0, 3).map((skill, idx) => (
+                                <span key={idx} className="bg-purple-900/20 text-purple-300 text-xs px-3 py-1 rounded-full">
+                                  {skill}
+                                </span>
+                              ))}
+                              {course.skills.length > 3 && (
+                                <span className="bg-purple-900/20 text-purple-300 text-xs px-3 py-1 rounded-full">
+                                  +{course.skills.length - 3} more
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className={`transition-opacity duration-300 ${hoveredCourse === course.id ? 'opacity-100' : 'opacity-0'}`}>
+                            <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Level</h4>
+                            <p className="text-gray-300 text-sm">{course.level}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-purple-900/20 p-4 flex justify-between items-center">
+                        <span className="text-sm text-gray-300">Enrollment Open</span>
+                        <button className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition">
+                          Learn More
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Curriculum Preview */}
+                {activeTab === 'curriculum' && (
+                  <div className="bg-black/40 backdrop-blur-lg rounded-2xl p-8 mb-16">
+                    <h2 className="text-2xl font-bold mb-6">Curriculum Highlights</h2>
+                    <div className="space-y-6">
+                      {courses.map((course) => (
+                        <div key={course.id} className="border-l-2 border-purple-600 pl-6 py-2">
+                          <h3 className="text-lg font-medium mb-2">{course.title}</h3>
+                          <ul className="space-y-2">
+                            {course.skills.map((skill, idx) => (
+                              <li key={idx} className="text-gray-400 flex items-center">
+                                <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                                {skill}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="mt-3 text-sm text-purple-400">
+                            Final Project: {course.projects}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Career Paths */}
+                {activeTab === 'careers' && (
+                  <div className="bg-black/40 backdrop-blur-lg rounded-2xl p-8 mb-16">
+                    <h2 className="text-2xl font-bold mb-6">Career Opportunities</h2>
+                    <div className="space-y-8">
+                      {courses.map((course) => (
+                        <div key={course.id} className="flex flex-col md:flex-row gap-6">
+                          <div className="w-16 h-16 bg-purple-900/30 rounded-xl flex items-center justify-center text-3xl flex-shrink-0">
+                            {course.icon}
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-medium mb-2">{course.title}</h3>
+                            <p className="text-gray-400 mb-3">
+                              Career paths: {course.career}
+                            </p>
+                            <div className="flex gap-2 items-center">
+                              <div className="flex -space-x-2">
+                                {[...Array(3)].map((_, i) => (
+                                  <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 border border-black"></div>
+                                ))}
+                              </div>
+                              <span className="text-sm text-gray-400">86% job placement rate</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* CTA Section */}
+                <div className="text-center bg-gradient-to-r from-purple-900/30 to-black/60 rounded-2xl p-10 mb-16">
+                  <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Future?</h2>
+                  <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Join thousands of students who have launched successful careers through our cutting-edge curriculum and industry partnerships.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button className="bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-100 transition">
+                      Download Full Brochure
+                    </button>
+                    <button className="bg-transparent border border-purple-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-purple-900/20 transition">
+                      Schedule Consultation
+                    </button>
+                  </div>
+                </div>
+
+                {/* Testimonials */}
+                <div className="mb-16">
+                  <h2 className="text-2xl font-bold mb-8 text-center">Student Success Stories</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[1, 2, 3].map((i) => (
+                      <div key={i} className="bg-black/40 backdrop-blur-lg rounded-xl p-6 border border-purple-900/20">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full"></div>
+                          <div>
+                            <h4 className="font-medium">Student Name</h4>
+                            <p className="text-sm text-purple-400">AI Developer Graduate</p>
+                          </div>
+                        </div>
+                        <p className="text-gray-300 italic">
+                          "The hands-on projects and mentorship I received at SkillTrai helped me land my dream job at a leading tech company."
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="text-center text-sm text-gray-500 pt-8 border-t border-gray-800">
+                <p>© 2025 SkillTrai. All rights reserved.</p>
+                <p className="mt-2">Empowering the next generation of tech professionals.</p>
+              </div>
+            </div>
+          );
+        };
+
+        // Main App Component
+        const CoursesPage = () => {
+            return (
+                <div className="bg-black min-h-screen">
+                    <Navigation />
+                    <CourseBrochure />
+                </div>
+            );
+        };
+
+        // Render the app
+        ReactDOM.render(
+            <CoursesPage />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
