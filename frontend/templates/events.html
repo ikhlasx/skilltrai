@@ -38,8 +38,8 @@
                     <div className="flex items-center space-x-8">
                         <a href="/" className="text-gray-300 hover:text-white">Home</a>
                         <a href="/courses/" className="text-gray-300 hover:text-white">Courses</a>
-                        <a href="/trainers/" className="text-gray-300 hover:text-white">Trainers</a>
-                        <a href="/events/" className="text-white">Events</a>
+                        <a href="/trainers/" className="text-white">Trainers</a>
+                        <a href="/events/" className="text-gray-300 hover:text-white">Events</a>
                         <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
                             Let's Talk
                         </button>
@@ -58,7 +58,7 @@
 
             return (
                 <div
-                    className="bg-gradient-to-br from-gray-900 to-black border border-purple-900/30 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-600/20 cursor-pointer group"
+                    className="min-h-screen bg-gradient-to-br from-black via-purple-900/30 to-black text-white"
                     onClick={() => onClick(event.id)}
                 >
                     <div className="relative overflow-hidden">

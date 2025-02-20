@@ -38,8 +38,8 @@
                     <div className="flex items-center space-x-8">
                         <a href="/" className="text-gray-300 hover:text-white">Home</a>
                         <a href="/courses/" className="text-gray-300 hover:text-white">Courses</a>
-                        <a href="/trainers/" className="text-gray-300 hover:text-white">Trainers</a>
-                        <a href="/events/" className="text-white">Events</a>
+                        <a href="/trainers/" className="text-white">Trainers</a>
+                        <a href="/events/" className="text-gray-300 hover:text-white">Events</a>
                         <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
                             Let's Talk
                         </button>
@@ -50,7 +50,7 @@
 
         // Trainer Profile Component
         const TrainerProfile = ({ trainer, isExpanded, toggleExpand }) => (
-            <div className="bg-gradient-to-br from-gray-900 to-black border border-purple-900/30 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-600/20">
+            <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/30 to-black text-white">
                 <div className="relative">
                     <img
                         src={`/api/placeholder/400/320`}
@@ -82,8 +82,10 @@
                         className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center"
                     >
                         {isExpanded ? 'Show Less' : 'Read More'}
-                        <svg className={`ml-1 w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                        <svg className={`ml-1 w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                  d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                 </div>
@@ -101,10 +103,12 @@
                         </ul>
 
                         <div className="flex gap-3">
-                            <a href={`mailto:${trainer.email}`} className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition flex-1 text-center">
+                            <a href={`mailto:${trainer.email}`}
+                               className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition flex-1 text-center">
                                 Contact Trainer
                             </a>
-                            <a href={trainer.calendar} className="bg-transparent border border-purple-500 text-white text-sm px-4 py-2 rounded-full hover:bg-purple-900/20 transition flex-1 text-center">
+                            <a href={trainer.calendar}
+                               className="bg-transparent border border-purple-500 text-white text-sm px-4 py-2 rounded-full hover:bg-purple-900/20 transition flex-1 text-center">
                                 Book Session
                             </a>
                         </div>
@@ -114,7 +118,7 @@
         );
 
         // Trainer Filter Component
-        const TrainerFilters = ({ activeFilter, setActiveFilter, filters }) => (
+        const TrainerFilters = ({activeFilter, setActiveFilter, filters }) => (
             <div className="flex justify-center mb-12 overflow-x-auto">
                 <div className="bg-black/40 backdrop-blur-lg rounded-full p-1 inline-flex">
                     {filters.map(filter => (
