@@ -98,6 +98,7 @@
         // Trainer Profile Component
         const TrainerProfile = ({ trainer, isActive, setActiveTrainer, onViewDetails }) => {
             const profileRef = useRef(null);
+            const [selectedTab, setSelectedTab] = useState('about'); // Add this line
 
             useEffect(() => {
                 if (isActive && profileRef.current) {
