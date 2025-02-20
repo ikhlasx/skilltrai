@@ -11,3 +11,6 @@ def courses(request):
 
 def trainers(request):
     return render(request, 'trainers.html')
+
+def events(request):
+    return render(request, 'events.html')
