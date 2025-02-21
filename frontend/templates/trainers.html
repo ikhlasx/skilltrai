@@ -38,6 +38,7 @@
 </head>
 <body>
     <div id="root"></div>
+    {% verbatim %}
     <script type="text/babel">
         // Import React hooks
         const { useState, useEffect, useRef } = React;
@@ -628,7 +629,7 @@
                                                         <div className="w-full h-2 bg-gray-800 rounded-full ml-2">
                                                             <div
                                                                 className="h-2 bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-full"
-                                                                style={{ width: `${percentage}%` }}
+                                                                style={{width: (percentage + '%')}}
                                                             ></div>
                                                         </div>
                                                         <span className="text-gray-400 text-sm ml-3 w-12">{percentage}%</span>
@@ -1299,5 +1300,6 @@
             ReactDOM.render(<TrainersPage />, document.getElementById('root'));
         });
     </script>
+    {% endverbatim %}
 </body>
 </html>
