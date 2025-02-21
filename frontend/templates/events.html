@@ -641,21 +641,24 @@
             };
 
             return (
-                <div className="min-h-screen bg-black text-white">
-                    <Navigation />
+                <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/30 to-black text-white">
+                    <Navigation/>
 
                     {/* Header */}
                     <div className="text-center mb-16 pt-28 px-4">
-                        <div className="inline-flex items-center bg-black border border-purple-900 rounded-full px-5 py-2 mb-6">
+                        <div
+                            className="inline-flex items-center bg-black border border-purple-900 rounded-full px-5 py-2 mb-6">
                             <span className="text-sm font-medium text-purple-400">JOIN THE EXCITEMENT</span>
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            <span className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
+                            <span
+                                className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
                                 Events & Competitions
                             </span>
                         </h1>
                         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                            Showcase your skills, connect with like-minded professionals, and push your limits in our dynamic events and competitions.
+                            Showcase your skills, connect with like-minded professionals, and push your limits in our
+                            dynamic events and competitions.
                         </p>
                     </div>
 
@@ -667,30 +670,38 @@
                                 alt="Skilltron 1.0 Hackathon"
                                 className="w-full h-64 md:h-80 object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/70"></div>
+                            <div
+                                className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/70"></div>
                             <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-12">
-                                <div className="inline-flex items-center bg-black border border-purple-600 rounded-full px-4 py-2 mb-4 w-fit">
+                                <div
+                                    className="inline-flex items-center bg-black border border-purple-600 rounded-full px-4 py-2 mb-4 w-fit">
                                     <span className="text-xs md:text-sm font-medium text-white">FEATURED EVENT</span>
                                 </div>
-                                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 max-w-2xl">Skilltron 1.0 Hackathon</h2>
+                                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 max-w-2xl">Skilltron
+                                    1.0 Hackathon</h2>
                                 <p className="text-base md:text-lg text-gray-200 mb-6 max-w-xl">
-                                    48-hour coding marathon with prizes, mentorship, and networking opportunities. Challenge yourself and build the future!
+                                    48-hour coding marathon with prizes, mentorship, and networking opportunities.
+                                    Challenge yourself and build the future!
                                 </p>
                                 <div className="flex flex-wrap gap-4">
-                                    <button className="bg-purple-600 text-white px-6 py-3 rounded-full font-medium hover:bg-purple-700 transition-colors">
+                                    <button
+                                        className="bg-purple-600 text-white px-6 py-3 rounded-full font-medium hover:bg-purple-700 transition-colors">
                                         Register Now
                                     </button>
-                                    <button className="bg-transparent border border-purple-600 text-white px-6 py-3 rounded-full font-medium hover:bg-purple-900/20 transition-colors">
+                                    <button
+                                        className="bg-transparent border border-purple-600 text-white px-6 py-3 rounded-full font-medium hover:bg-purple-900/20 transition-colors">
                                         Learn More
                                     </button>
                                 </div>
                                 <div className="flex items-center mt-6 md:mt-8">
                                     <div className="flex -space-x-2">
                                         {[...Array(5)].map((_, i) => (
-                                            <div key={i} className="w-8 h-8 rounded-full bg-purple-900 border-2 border-black"></div>
+                                            <div key={i}
+                                                 className="w-8 h-8 rounded-full bg-purple-900 border-2 border-black"></div>
                                         ))}
                                     </div>
-                                    <span className="ml-4 text-white text-sm md:text-base">250+ registered participants</span>
+                                    <span
+                                        className="ml-4 text-white text-sm md:text-base">250+ registered participants</span>
                                 </div>
                             </div>
                         </div>
@@ -717,9 +728,11 @@
                         <div className="text-center bg-black border border-gray-900 rounded-2xl p-6 md:p-10 mb-16">
                             <h2 className="text-2xl md:text-3xl font-bold mb-4">Host Your Own Event</h2>
                             <p className="text-base md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                                Looking to organize a hackathon, workshop, or competition? Partner with SkillTrai to reach our community of talented professionals.
+                                Looking to organize a hackathon, workshop, or competition? Partner with SkillTrai to
+                                reach our community of talented professionals.
                             </p>
-                            <button className="bg-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-700 transition-colors">
+                            <button
+                                className="bg-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-700 transition-colors">
                                 Become an Event Partner
                             </button>
                         </div>

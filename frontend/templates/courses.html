@@ -196,219 +196,234 @@
           const [hoveredCourse, setHoveredCourse] = useState(null);
 
           return (
-            <div className="min-h-screen bg-black text-white p-4 md:p-6">
-              <div className="max-w-6xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-16 pt-28">
-                  <div className="inline-flex items-center bg-black border border-purple-900 rounded-full px-5 py-2 mb-6">
-                    <span className="text-sm font-medium text-purple-400">COURSE CATALOG</span>
-                  </div>
-                  <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <div
+                  className="min-h-screen bg-gradient-to-br from-black via-purple-900/30 to-black text-white p-4 md:p-6">
+                  <div className="max-w-6xl mx-auto">
+                      {/* Header */}
+                      <div className="text-center mb-16 pt-28">
+                          <div
+                              className="inline-flex items-center bg-black border border-purple-900 rounded-full px-5 py-2 mb-6">
+                              <span className="text-sm font-medium text-purple-400">COURSE CATALOG</span>
+                          </div>
+                          <h1 className="text-4xl md:text-6xl font-bold mb-6">
                     <span className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
                       Future-Ready Skills
                     </span>
-                  </h1>
-                  <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Comprehensive courses designed to transform beginners into industry-ready professionals
-                    through hands-on projects and expert mentorship.
-                  </p>
-                </div>
+                          </h1>
+                          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                              Comprehensive courses designed to transform beginners into industry-ready professionals
+                              through hands-on projects and expert mentorship.
+                          </p>
+                      </div>
 
-                {/* Navigation Tabs */}
-                <div className="flex justify-center mb-12 overflow-x-auto pb-2">
-                  <div className="bg-black border border-gray-900 rounded-full p-1 inline-flex">
-                    <button
-                      onClick={() => setActiveTab('overview')}
-                      className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
-                        activeTab === 'overview' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
-                      }`}
-                    >
-                      Overview
-                    </button>
-                    <button
-                      onClick={() => setActiveTab('curriculum')}
-                      className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
-                        activeTab === 'curriculum' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
-                      }`}
-                    >
-                      Curriculum
-                    </button>
-                    <button
-                      onClick={() => setActiveTab('careers')}
-                      className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
-                        activeTab === 'careers' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
-                      }`}
-                    >
-                      Career Paths
-                    </button>
-                  </div>
-                </div>
+                      {/* Navigation Tabs */}
+                      <div className="flex justify-center mb-12 overflow-x-auto pb-2">
+                          <div className="bg-black border border-gray-900 rounded-full p-1 inline-flex">
+                              <button
+                                  onClick={() => setActiveTab('overview')}
+                                  className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
+                                      activeTab === 'overview' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                                  }`}
+                              >
+                                  Overview
+                              </button>
+                              <button
+                                  onClick={() => setActiveTab('curriculum')}
+                                  className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
+                                      activeTab === 'curriculum' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                                  }`}
+                              >
+                                  Curriculum
+                              </button>
+                              <button
+                                  onClick={() => setActiveTab('careers')}
+                                  className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
+                                      activeTab === 'careers' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                                  }`}
+                              >
+                                  Career Paths
+                              </button>
+                          </div>
+                      </div>
 
-                {/* Course Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
-                  {courses.map((course) => (
-                    <div
-                      key={course.id}
-                      className="bg-black border border-gray-900 rounded-xl overflow-hidden transition-all duration-300 hover:border-purple-900"
-                      onMouseEnter={() => setHoveredCourse(course.id)}
-                      onMouseLeave={() => setHoveredCourse(null)}
-                    >
-                      <div className="p-6">
-                        <div className="flex justify-between items-start mb-4">
-                          <div className="text-4xl mb-4">{course.icon}</div>
-                          <span className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
+                      {/* Course Grid */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+                          {courses.map((course) => (
+                              <div
+                                  key={course.id}
+                                  className="bg-black border border-gray-900 rounded-xl overflow-hidden transition-all duration-300 hover:border-purple-900"
+                                  onMouseEnter={() => setHoveredCourse(course.id)}
+                                  onMouseLeave={() => setHoveredCourse(null)}
+                              >
+                                  <div className="p-6">
+                                      <div className="flex justify-between items-start mb-4">
+                                          <div className="text-4xl mb-4">{course.icon}</div>
+                                          <span
+                                              className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
                             {course.duration}
                           </span>
-                        </div>
-                        <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
-                        <p className="text-gray-400 text-sm mb-6">{course.description}</p>
+                                      </div>
+                                      <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
+                                      <p className="text-gray-400 text-sm mb-6">{course.description}</p>
 
-                        <div className="space-y-4">
-                          <div>
-                            <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Key Skills</h4>
-                            <div className="flex flex-wrap gap-2">
-                              {course.skills.slice(0, 3).map((skill, idx) => (
-                                <span key={idx} className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
+                                      <div className="space-y-4">
+                                          <div>
+                                              <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Key
+                                                  Skills</h4>
+                                              <div className="flex flex-wrap gap-2">
+                                                  {course.skills.slice(0, 3).map((skill, idx) => (
+                                                      <span key={idx}
+                                                            className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
                                   {skill}
                                 </span>
-                              ))}
-                              {course.skills.length > 3 && (
-                                <span className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
+                                                  ))}
+                                                  {course.skills.length > 3 && (
+                                                      <span
+                                                          className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
                                   +{course.skills.length - 3} more
                                 </span>
-                              )}
-                            </div>
-                          </div>
+                                                  )}
+                                              </div>
+                                          </div>
 
-                          <div className={`transition-opacity duration-300 ${hoveredCourse === course.id ? 'opacity-100' : 'opacity-0 hidden md:block'}`}>
-                            <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Level</h4>
-                            <p className="text-gray-300 text-sm">{course.level}</p>
-                          </div>
+                                          <div
+                                              className={`transition-opacity duration-300 ${hoveredCourse === course.id ? 'opacity-100' : 'opacity-0 hidden md:block'}`}>
+                                              <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Level</h4>
+                                              <p className="text-gray-300 text-sm">{course.level}</p>
+                                          </div>
 
-                          {/* Always show level on mobile */}
-                          <div className="md:hidden">
-                            <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Level</h4>
-                            <p className="text-gray-300 text-sm">{course.level}</p>
-                          </div>
-                        </div>
-                      </div>
+                                          {/* Always show level on mobile */}
+                                          <div className="md:hidden">
+                                              <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Level</h4>
+                                              <p className="text-gray-300 text-sm">{course.level}</p>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                      <div className="bg-black border-t border-gray-900 p-4 flex justify-between items-center">
-                        <span className="text-sm text-gray-300">Enrollment Open</span>
-                        <button className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition">
-                          Learn More
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Curriculum Preview */}
-                {activeTab === 'curriculum' && (
-                  <div className="bg-black border border-gray-900 rounded-2xl p-6 md:p-8 mb-16">
-                    <h2 className="text-2xl font-bold mb-6">Curriculum Highlights</h2>
-                    <div className="space-y-6">
-                      {courses.map((course) => (
-                        <div key={course.id} className="border-l-2 border-purple-600 pl-6 py-2">
-                          <h3 className="text-lg font-medium mb-2">{course.title}</h3>
-                          <ul className="space-y-2">
-                            {course.skills.map((skill, idx) => (
-                              <li key={idx} className="text-gray-400 flex items-center">
-                                <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                                {skill}
-                              </li>
-                            ))}
-                          </ul>
-                          <p className="mt-3 text-sm text-purple-400">
-                            Final Project: {course.projects}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Career Paths */}
-                {activeTab === 'careers' && (
-                  <div className="bg-black border border-gray-900 rounded-2xl p-6 md:p-8 mb-16">
-                    <h2 className="text-2xl font-bold mb-6">Career Opportunities</h2>
-                    <div className="space-y-8">
-                      {courses.map((course) => (
-                        <div key={course.id} className="flex flex-col md:flex-row gap-6">
-                          <div className="w-16 h-16 bg-black border border-purple-900 rounded-xl flex items-center justify-center text-3xl flex-shrink-0">
-                            {course.icon}
-                          </div>
-                          <div>
-                            <h3 className="text-lg font-medium mb-2">{course.title}</h3>
-                            <p className="text-gray-400 mb-3">
-                              Career paths: {course.career}
-                            </p>
-                            <div className="flex gap-2 items-center">
-                              <div className="flex -space-x-2">
-                                {[...Array(3)].map((_, i) => (
-                                  <div key={i} className="w-8 h-8 rounded-full bg-purple-900 border-2 border-black"></div>
-                                ))}
+                                  <div
+                                      className="bg-black border-t border-gray-900 p-4 flex justify-between items-center">
+                                      <span className="text-sm text-gray-300">Enrollment Open</span>
+                                      <button
+                                          className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition">
+                                          Learn More
+                                      </button>
+                                  </div>
                               </div>
-                              <span className="text-sm text-gray-400">86% job placement rate</span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* CTA Section */}
-                <div className="text-center bg-black border border-gray-900 rounded-2xl p-6 md:p-10 mb-16">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Future?</h2>
-                  <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Join thousands of students who have launched successful careers through our cutting-edge curriculum and industry partnerships.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button className="bg-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-700 transition">
-                      Download Full Brochure
-                    </button>
-                    <button className="bg-transparent border border-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-900/20 transition">
-                      Schedule Consultation
-                    </button>
-                  </div>
-                </div>
-
-                {/* Testimonials */}
-                <div className="mb-16">
-                  <h2 className="text-xl md:text-2xl font-bold mb-8 text-center">Student Success Stories</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="bg-black border border-gray-900 rounded-xl p-6">
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 bg-purple-900 rounded-full"></div>
-                          <div>
-                            <h4 className="font-medium">Student Name</h4>
-                            <p className="text-sm text-purple-400">AI Developer Graduate</p>
-                          </div>
-                        </div>
-                        <p className="text-gray-300 italic">
-                          "The hands-on projects and mentorship I received at SkillTrai helped me land my dream job at a leading tech company."
-                        </p>
+                          ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
 
-              {/* Footer */}
-              <div className="text-center text-sm text-gray-500 pt-8 border-t border-gray-900 pb-8">
-                <p>© 2025 SkillTrai. All rights reserved.</p>
-                <p className="mt-2">Empowering the next generation of tech professionals.</p>
+                      {/* Curriculum Preview */}
+                      {activeTab === 'curriculum' && (
+                          <div className="bg-black border border-gray-900 rounded-2xl p-6 md:p-8 mb-16">
+                              <h2 className="text-2xl font-bold mb-6">Curriculum Highlights</h2>
+                              <div className="space-y-6">
+                                  {courses.map((course) => (
+                                      <div key={course.id} className="border-l-2 border-purple-600 pl-6 py-2">
+                                          <h3 className="text-lg font-medium mb-2">{course.title}</h3>
+                                          <ul className="space-y-2">
+                                              {course.skills.map((skill, idx) => (
+                                                  <li key={idx} className="text-gray-400 flex items-center">
+                                                      <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                                                      {skill}
+                                                  </li>
+                                              ))}
+                                          </ul>
+                                          <p className="mt-3 text-sm text-purple-400">
+                                              Final Project: {course.projects}
+                                          </p>
+                                      </div>
+                                  ))}
+                              </div>
+                          </div>
+                      )}
+
+                      {/* Career Paths */}
+                      {activeTab === 'careers' && (
+                          <div className="bg-black border border-gray-900 rounded-2xl p-6 md:p-8 mb-16">
+                              <h2 className="text-2xl font-bold mb-6">Career Opportunities</h2>
+                              <div className="space-y-8">
+                                  {courses.map((course) => (
+                                      <div key={course.id} className="flex flex-col md:flex-row gap-6">
+                                          <div
+                                              className="w-16 h-16 bg-black border border-purple-900 rounded-xl flex items-center justify-center text-3xl flex-shrink-0">
+                                              {course.icon}
+                                          </div>
+                                          <div>
+                                              <h3 className="text-lg font-medium mb-2">{course.title}</h3>
+                                              <p className="text-gray-400 mb-3">
+                                                  Career paths: {course.career}
+                                              </p>
+                                              <div className="flex gap-2 items-center">
+                                                  <div className="flex -space-x-2">
+                                                      {[...Array(3)].map((_, i) => (
+                                                          <div key={i}
+                                                               className="w-8 h-8 rounded-full bg-purple-900 border-2 border-black"></div>
+                                                      ))}
+                                                  </div>
+                                                  <span className="text-sm text-gray-400">86% job placement rate</span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  ))}
+                              </div>
+                          </div>
+                      )}
+
+                      {/* CTA Section */}
+                      <div className="text-center bg-black border border-gray-900 rounded-2xl p-6 md:p-10 mb-16">
+                          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Future?</h2>
+                          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                              Join thousands of students who have launched successful careers through our cutting-edge
+                              curriculum and industry partnerships.
+                          </p>
+                          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                              <button
+                                  className="bg-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-700 transition">
+                                  Download Full Brochure
+                              </button>
+                              <button
+                                  className="bg-transparent border border-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-900/20 transition">
+                                  Schedule Consultation
+                              </button>
+                          </div>
+                      </div>
+
+                      {/* Testimonials */}
+                      <div className="mb-16">
+                          <h2 className="text-xl md:text-2xl font-bold mb-8 text-center">Student Success Stories</h2>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                              {[1, 2, 3].map((i) => (
+                                  <div key={i} className="bg-black border border-gray-900 rounded-xl p-6">
+                                      <div className="flex items-center gap-4 mb-4">
+                                          <div className="w-12 h-12 bg-purple-900 rounded-full"></div>
+                                          <div>
+                                              <h4 className="font-medium">Student Name</h4>
+                                              <p className="text-sm text-purple-400">AI Developer Graduate</p>
+                                          </div>
+                                      </div>
+                                      <p className="text-gray-300 italic">
+                                          "The hands-on projects and mentorship I received at SkillTrai helped me land
+                                          my dream job at a leading tech company."
+                                      </p>
+                                  </div>
+                              ))}
+                          </div>
+                      </div>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="text-center text-sm text-gray-500 pt-8 border-t border-gray-900 pb-8">
+                      <p>© 2025 SkillTrai. All rights reserved.</p>
+                      <p className="mt-2">Empowering the next generation of tech professionals.</p>
+                  </div>
               </div>
-            </div>
           );
         };
 
         // Main App Component
         const CoursesPage = () => {
             return (
-                <div className="bg-black min-h-screen">
+                    <div className="bg-black min-h-screen">
                     <Navigation />
                     <CourseBrochure />
                 </div>
