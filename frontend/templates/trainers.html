@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -253,6 +254,7 @@
                 </div>
             );
         };
+
         // Trainer Filter Component
         const TrainerFilters = ({ activeFilter, setActiveFilter, filters, searchTerm, setSearchTerm }) => {
             return (
@@ -1292,11 +1294,11 @@
                         />
                     )}
                 </div>
-        );
+            );
         };
 
-         // Initialize the app when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
+        // Initialize the app when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
             ReactDOM.render(<TrainersPage />, document.getElementById('root'));
         });
     </script>
