@@ -1,376 +1,280 @@
-import React, { useState } from 'react';
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillTrai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+        @keyframes marquee2 {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(0%); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+        .animate-marquee2 {
+            animation: marquee2 30s linear infinite;
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 8s ease-in-out infinite 1s;
+        }
+        .animate-float-slow {
+            animation: float 10s ease-in-out infinite 2s;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const ModernLandingPage = () => {
+            const Navigation = () => {
+                const [isOpen, setIsOpen] = React.useState(false);
 
-const Navigation = () => {
-    const [isOpen, setIsOpen] = useState(false);
+                return (
+                    <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+                        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                            <div className="flex items-center space-x-2">
+                                <img src="{% static 'images/logo.png' %}" alt="SkillTrai Logo" className="w-8 h-8" />
+                                <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
+                            </div>
 
-    return (
-        <nav className="fixed w-full bg-white shadow-sm z-50">
-          <div className="container mx-auto px-4 lg:px-6 py-4">
-            <div className="flex justify-between items-center">
-              <div className="hidden lg:flex items-center space-x-8">
-                        <div className="w-8 h-8 bg-rose-500 rounded-full"></div>
-                        <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
-                    </div>
+                            {/* Desktop Menu */}
+                            <div className="hidden md:flex items-center space-x-8">
+                                <button className="text-gray-600 hover:text-gray-900">About</button>
+                                <a href="/trainers/" className="text-gray-600 hover:text-gray-900">Trainers</a>
+                                <a href="/events/" className="text-gray-600 hover:text-gray-900">Events</a>
+                                <a href="/courses/" className="text-gray-600 hover:text-gray-900">Courses</a>
+                                <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
+                                    Let's Talk
+                                </button>
+                            </div>
 
-                    {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-center space-x-8">
-                        <button className="text-gray-600 hover:text-gray-900">About</button>
-                        <a href="/trainers/" className="text-gray-600 hover:text-gray-900">Trainers</a>
-                        <a href="/events/" className="text-gray-600 hover:text-gray-900">Events</a>
-                        <a href="/courses/" className="text-gray-600 hover:text-gray-900">Courses</a>
-                        <button className="bg-rose-500 text-white px-6 py-2 rounded-lg hover:bg-rose-600 transition duration-300">
-                            Let's Talk
-                        </button>
-                    </div>
+                            {/* Mobile Menu Button */}
+                            <button
+                                onClick={() => setIsOpen(!isOpen)}
+                                className="md:hidden flex flex-col justify-center items-center gap-1.5"
+                            >
+                                <span className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                                <span className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+                                <span className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                            </button>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="lg:hidden"
-                    >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
+                            {/* Mobile Menu */}
+                            {isOpen && (
+                                <div className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden">
+                                    <div className="flex flex-col items-center space-y-6 py-8">
+                                        <button className="text-gray-600 hover:text-gray-900">About</button>
+                                        <a href="/trainers/" className="text-gray-600 hover:text-gray-900">Trainers</a>
+                                        <a href="/events/" className="text-gray-600 hover:text-gray-900">Events</a>
+                                        <a href="/courses/" className="text-gray-600 hover:text-gray-900">Courses</a>
+                                        <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
+                                            Let's Talk
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </nav>
+                );
+            };
 
-                {/* Mobile Menu */}
-                {isOpen && (
-                    <div className="lg:hidden mt-4 pb-4">
-                        <div className="flex flex-col space-y-4">
-                            <button className="text-gray-600 hover:text-gray-900">About</button>
-                            <a href="/trainers/" className="text-gray-600 hover:text-gray-900">Trainers</a>
-                            <a href="/events/" className="text-gray-600 hover:text-gray-900">Events</a>
-                            <a href="/courses/" className="text-gray-600 hover:text-gray-900">Courses</a>
-                            <button className="bg-rose-500 text-white px-6 py-2 rounded-lg hover:bg-rose-600 w-full">
-                                Let's Talk
+            const Hero = () => (
+                <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-white flex items-center">
+                    <div className="container mx-auto px-6 pt-20">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <div className="inline-flex items-center bg-purple-100 rounded-full px-4 py-2 mb-8">
+                                <span className="text-xs font-medium text-purple-600 mr-2">NEW</span>
+                                <span className="text-sm text-gray-600">Skilltron 1.0!</span>
+                            </div>
+                            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+                                Be Independent<br />
+                                <span className="bg-gradient-to-r from-purple-600 to-purple-800 text-transparent bg-clip-text">
+                                    And Stay Ahead.
+                                </span>
+                            </h1>
+                            <p className="text-gray-600 text-xl mb-12 max-w-2xl mx-auto">
+                                We help you to build your professional career
+                                and become an independent Freelancer.
+                            </p>
+                            <button className="bg-purple-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-purple-700 transform transition hover:scale-105">
+                                Start for free
                             </button>
                         </div>
                     </div>
-                )}
-            </div>
-        </nav>
-    );
-};
+                </div>
+            );
 
-const Hero = () => (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-white pt-20">
-        <div className="container mx-auto px-4 lg:px-6">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 py-12">
-                <div className="lg:w-1/2">
-                    <div className="inline-flex items-center bg-rose-100 rounded-full px-4 py-2 mb-8">
-                        <span className="text-xs font-medium text-rose-600 mr-2">NEW</span>
-                        <span className="text-sm text-gray-600">Skilltron 1.0!</span>
-                    </div>
-                    <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                        Master the Skills of
-                        <span className="block text-rose-500">Tomorrow, Today</span>
-                    </h1>
-                    <p className="text-gray-600 text-lg mb-8">
-                        Join our community of learners and get certified in the latest technologies. Transform your career with expert-led training.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                        <button className="bg-rose-500 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-rose-600 transition duration-300">
-                            Explore Courses
-                        </button>
-                        <button className="border-2 border-rose-500 text-rose-500 px-8 py-4 rounded-lg text-lg font-medium hover:bg-rose-50 transition duration-300">
-                            Free Demo
-                        </button>
-                    </div>
-                </div>
-                <div className="lg:w-1/2">
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-rose-200 rounded-full blur-3xl opacity-20"></div>
-                        <img
-                            src="/api/placeholder/600/500"
-                            alt="Training"
-                            className="relative z-10 rounded-2xl shadow-xl"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
+            const GradientBanner = () => {
+                return (
+                    <div className="relative overflow-hidden bg-gradient-to-r from-purple-600 via-purple-800 to-purple-600 py-12">
+                        {/* Background Shapes */}
+                        <div className="absolute inset-0 overflow-hidden">
+                            <div className="absolute top-1/2 left-0 w-24 h-24 bg-white/10 rounded-full transform -translate-y-1/2 blur-xl animate-float"></div>
+                            <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-purple-300/10 rounded-full blur-xl animate-float-delayed"></div>
+                            <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-xl animate-float-slow"></div>
+                        </div>
 
-        {/* Stats Section */}
-        <div className="container mx-auto px-4 lg:px-6 py-20">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                    <div className="text-4xl font-bold text-rose-500 mb-2">15K+</div>
-                    <div className="text-gray-600">Students Trained</div>
-                </div>
-                <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                    <div className="text-4xl font-bold text-rose-500 mb-2">95%</div>
-                    <div className="text-gray-600">Placement Rate</div>
-                </div>
-                <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                    <div className="text-4xl font-bold text-rose-500 mb-2">100+</div>
-                    <div className="text-gray-600">Expert Trainers</div>
-                </div>
-                <div className="text-center p-6 bg-white rounded-xl shadow-lg">
-                    <div className="text-4xl font-bold text-rose-500 mb-2">50+</div>
-                    <div className="text-gray-600">Corporate Partners</div>
-                </div>
-            </div>
-        </div>
-    </div>
-);
-
-const PopularCourses = () => {
-    const courses = [
-        {
-            title: "Full Stack Development",
-            image: "/api/placeholder/400/250",
-            duration: "6 months",
-            level: "Beginner to Advanced",
-            rating: 4.8,
-            students: 1500
-        },
-        {
-            title: "Data Science & Analytics",
-            image: "/api/placeholder/400/250",
-            duration: "4 months",
-            level: "Intermediate",
-            rating: 4.9,
-            students: 1200
-        },
-        {
-            title: "Cloud Computing",
-            image: "/api/placeholder/400/250",
-            duration: "3 months",
-            level: "Advanced",
-            rating: 4.7,
-            students: 900
-        }
-    ];
-
-    return (
-        <div className="bg-white py-20">
-            <div className="container mx-auto px-4 lg:px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">Popular Courses</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                        Choose from our most sought-after courses and start your journey towards expertise
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {courses.map((course, index) => (
-                        <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                            <img src={course.image} alt={course.title} className="w-full h-48 object-cover" />
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">{course.title}</h3>
-                                <div className="flex items-center text-gray-600 mb-4">
-                                    <span className="mr-4">{course.duration}</span>
-                                    <span>{course.level}</span>
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center">
-                                        <span className="text-rose-500 font-bold mr-2">{course.rating}</span>
-                                        <div className="flex text-yellow-400">
-                                            {[...Array(5)].map((_, i) => (
-                                                <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                </svg>
-                                            ))}
-                                        </div>
+                        {/* Main Content Track */}
+                        <div className="flex animate-marquee whitespace-nowrap">
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className="flex items-center mx-12">
+                                    {/* Logo/Icon */}
+                                    <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-lg transform rotate-3">
+                                        <span className="text-purple-600 text-2xl font-bold">1.0</span>
                                     </div>
-                                    <span className="text-gray-600">{course.students} students</span>
+
+                                    {/* Text Group */}
+                                    <div className="ml-4 flex items-center">
+                                        <span className="text-4xl font-extrabold text-white mx-2 tracking-wider">
+                                            SKILL
+                                        </span>
+                                        <span className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white mx-2 tracking-wider">
+                                            TRON
+                                        </span>
+                                        <span className="text-2xl font-bold text-purple-300 ml-2">1.0</span>
+                                        <span className="text-3xl text-white/50 mx-6">★</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Duplicate Track for Seamless Loop */}
+                        <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap">
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className="flex items-center mx-12">
+                                    {/* Logo/Icon */}
+                                    <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-lg transform rotate-3">
+                                        <span className="text-purple-600 text-2xl font-bold">1.0</span>
+                                    </div>
+
+                                    {/* Text Group */}
+                                    <div className="ml-4 flex items-center">
+                                        <span className="text-4xl font-extrabold text-white mx-2 tracking-wider">
+                                            SKILL
+                                        </span>
+                                        <span className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white mx-2 tracking-wider">
+                                            TRON
+                                        </span>
+                                        <span className="text-2xl font-bold text-purple-300 ml-2">1.0</span>
+                                        <span className="text-3xl text-white/50 mx-6">★</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            };
+
+            const About = () => (
+                <div className="bg-white py-20">
+                    <div className="container mx-auto px-6">
+                        {/* Our Story Section */}
+                        <div className="max-w-4xl mx-auto mb-20">
+                            <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Our Story</h2>
+                            <div className="bg-purple-50 rounded-2xl p-8">
+                                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                                    SkillTrai was born from a simple yet powerful idea: to bridge the gap between traditional education and the real-world demands of the digital age. In 2023, a group of passionate tech professionals and educators came together with a shared vision of empowering individuals to become independent freelancers.
+                                </p>
+                                <p className="text-gray-700 text-lg leading-relaxed">
+                                    What started as informal mentoring sessions has grown into a comprehensive platform that has helped hundreds of professionals transition into successful freelance careers. Our journey is defined by the success stories of our trainees who have achieved financial independence and professional fulfillment.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Team Section */}
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Meet Our Team</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {/* Team Member 1 */}
+                                <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+                                    <img
+                                        src="{% static 'images/ikhlas.jpg' %}"
+                                        alt="Ikhlas"
+                                        className="w-full h-64 object-cover"
+                                    />
+                                    <div className="p-6">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Ikhlas</h3>
+                                        <p className="text-purple-600 mb-4">Founder & CEO</p>
+                                        <p className="text-gray-600">Full-stack developer and tech enthusiast with expertise in building modern web applications. Dedicated to empowering aspiring developers.</p>
+                                    </div>
+                                </div>
+
+                                {/* Team Member 2 */}
+                                <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+                                    <img
+                                        src="{% static 'images/afnan.jpg' %}"
+                                        alt="Afnan"
+                                        className="w-full h-64 object-cover"
+                                    />
+                                    <div className="p-6">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Afnan</h3>
+                                        <p className="text-purple-600 mb-4">Head of Education</p>
+                                        <p className="text-gray-600">Educational content specialist with a passion for creating engaging learning experiences. Expert in curriculum development.</p>
+                                    </div>
+                                </div>
+
+                                {/* Team Member 3 */}
+                                <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+                                    <img
+                                        src="{% static 'images/jasim.jpg' %}"
+                                        alt="Jasim"
+                                        className="w-full h-64 object-cover"
+                                    />
+                                    <div className="p-6">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Jasim</h3>
+                                        <p className="text-purple-600 mb-4">Lead Trainer</p>
+                                        <p className="text-gray-600">Senior developer and freelance consultant. Experienced in mentoring developers and building scalable applications.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const Features = () => {
-    const features = [
-        {
-            icon: "👨‍🏫",
-            title: "Expert Instructors",
-            description: "Learn from industry professionals with years of practical experience"
-        },
-        {
-            icon: "💼",
-            title: "Job Placement",
-            description: "Get placed in top companies with our extensive network"
-        },
-        {
-            icon: "🎯",
-            title: "Practical Training",
-            description: "Work on real-world projects and build your portfolio"
-        },
-        {
-            icon: "📚",
-            title: "Comprehensive Curriculum",
-            description: "Updated syllabus aligned with industry standards"
-        },
-        {
-            icon: "🌟",
-            title: "Lifetime Access",
-            description: "Access course materials and updates forever"
-        },
-        {
-            icon: "🤝",
-            title: "Career Support",
-            description: "Get guidance for interviews and career advancement"
-        }
-    ];
-
-    return (
-        <div className="bg-gray-50 py-20">
-            <div className="container mx-auto px-4 lg:px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Us?</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                        Experience the perfect blend of theoretical knowledge and practical training
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {features.map((feature, index) => (
-                        <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition duration-300">
-                            <div className="text-4xl mb-4">{feature.icon}</div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                            <p className="text-gray-600">{feature.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const CTASection = () => (
-    <div className="bg-rose-500 py-20">
-        <div className="container mx-auto px-4 lg:px-6">
-            <div className="max-w-4xl mx-auto text-center text-white">
-                <h2 className="text-4xl font-bold mb-6">Start Your Learning Journey Today</h2>
-                <p className="text-xl mb-8">
-                    Join thousands of successful professionals who transformed their careers with SkillTrai
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                    <button className="bg-white text-rose-500 px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition duration-300">
-                        Schedule Free Demo
-                    </button>
-                    <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-rose-600 transition duration-300">
-                        Browse Courses
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-);
-
-// Continuing Footer component
-const Footer = () => {
-    return (
-        <footer className="bg-gray-900 text-white py-12">
-            <div className="container mx-auto px-4 lg:px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                    <div>
-                        <div className="flex items-center space-x-2 mb-6">
-                            <div className="w-8 h-8 bg-rose-500 rounded-full"></div>
-                            <span className="text-xl font-medium">SkillTrai</span>
-                        </div>
-                        <p className="text-gray-400">
-                            Empowering careers through expert-led training and industry-relevant skills.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 className="text-lg font-bold mb-4">Popular Courses</h3>
-                        <ul className="space-y-2 text-gray-400">
-                            <li className="hover:text-gray-300 cursor-pointer">Full Stack Development</li>
-                            <li className="hover:text-gray-300 cursor-pointer">Data Science & Analytics</li>
-                            <li className="hover:text-gray-300 cursor-pointer">Cloud Computing</li>
-                            <li className="hover:text-gray-300 cursor-pointer">DevOps</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-                        <ul className="space-y-2 text-gray-400">
-                            <li className="hover:text-gray-300 cursor-pointer">About Us</li>
-                            <li className="hover:text-gray-300 cursor-pointer">Contact</li>
-                            <li className="hover:text-gray-300 cursor-pointer">Career Support</li>
-                            <li className="hover:text-gray-300 cursor-pointer">Success Stories</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 className="text-lg font-bold mb-4">Contact Us</h3>
-                        <ul className="space-y-2 text-gray-400">
-                            <li>
-                                <a href="mailto:contact@skilltrai.com" className="hover:text-gray-300">
-                                    contact@skilltrai.com
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tel:+12345678900" className="hover:text-gray-300">
-                                    +1 234 567 8900
-                                </a>
-                            </li>
-                            <li>123 Tech Street, Digital City</li>
-                        </ul>
-                        <div className="flex space-x-4 mt-6">
-                            <a href="#" className="text-gray-400 hover:text-white">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                </svg>
-                            </a>
-                            <a href="#" className="text-gray-400 hover:text-white">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                                </svg>
-                            </a>
-                            <a href="#" className="text-gray-400 hover:text-white">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                </svg>
-                            </a>
-                            <a href="#" className="text-gray-400 hover:text-white">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.897 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.897-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-                                </svg>
-                            </a>
-                        </div>
                     </div>
                 </div>
+            );
 
-                <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
-                    <p>© 2025 SkillTrai. All rights reserved.</p>
+            return (
+                <div className="bg-white min-h-screen">
+                    <Navigation />
+                    <Hero />
+                    <About />
+                    <GradientBanner />
                 </div>
-            </div>
-        </footer>
-    );
-};
+            );
+        };
 
-// Main Landing Page Component
-const FullLandingPage = () => {
-    return (
-        <div className="bg-white">
-            <Navigation />
-            <Hero />
-            <PopularCourses />
-            <Features />
-            <CTASection />
-            <Footer />
-        </div>
-    );
-};
-
-// Export all components
-export {
-    Navigation,
-    Hero,
-    PopularCourses,
-    Features,
-    CTASection,
-    Footer,
-};
-
-// Export default component
-export default FullLandingPage;
+        // Render the app
+        ReactDOM.render(
+            <ModernLandingPage />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
