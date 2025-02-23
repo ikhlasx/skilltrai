@@ -21,6 +21,22 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        @keyframes mini-marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+        @keyframes mini-marquee2 {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(0%); }
+        }
+        .animate-mini-marquee {
+            animation: mini-marquee 40s linear infinite;
+        }
+        .animate-mini-marquee2 {
+            animation: mini-marquee2 40s linear infinite;
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
@@ -31,6 +47,7 @@
 
                 return (
                     <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+                        {/* Your existing Navigation code */}
                         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                             <div className="flex items-center space-x-2">
                                 <img src="{% static 'images/logo.png' %}" alt="SkillTrai Logo" className="w-8 h-8" />
@@ -74,6 +91,36 @@
                             )}
                         </div>
                     </nav>
+                );
+            };
+
+            const TopMiniBanner = () => {
+                return (
+                    <div className="fixed top-[72px] w-full z-40 overflow-hidden bg-gradient-to-r from-purple-50 via-white to-purple-50 py-2 border-b border-purple-100">
+                        <div className="flex animate-mini-marquee whitespace-nowrap">
+                            {[...Array(8)].map((_, index) => (
+                                <div key={index} className="flex items-center mx-8">
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-purple-600 text-sm font-medium">NEW</span>
+                                        <span className="text-gray-600 text-sm">Skilltron 1.0</span>
+                                        <span className="text-purple-400 mx-2">•</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="absolute top-0 flex animate-mini-marquee2 whitespace-nowrap">
+                            {[...Array(8)].map((_, index) => (
+                                <div key={index} className="flex items-center mx-8">
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-purple-600 text-sm font-medium">NEW</span>
+                                        <span className="text-gray-600 text-sm">Skilltron 1.0</span>
+                                        <span className="text-purple-400 mx-2">•</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 );
             };
 
