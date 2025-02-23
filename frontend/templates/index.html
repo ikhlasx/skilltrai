@@ -22,19 +22,32 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <style>
-        @keyframes mini-marquee {
+        @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-100%); }
         }
-        @keyframes mini-marquee2 {
+        @keyframes marquee2 {
             0% { transform: translateX(100%); }
             100% { transform: translateX(0%); }
         }
-        .animate-mini-marquee {
-            animation: mini-marquee 40s linear infinite;
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
         }
-        .animate-mini-marquee2 {
-            animation: mini-marquee2 40s linear infinite;
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+        .animate-marquee2 {
+            animation: marquee2 30s linear infinite;
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 8s ease-in-out infinite 1s;
+        }
+        .animate-float-slow {
+            animation: float 10s ease-in-out infinite 2s;
         }
     </style>
 </head>
@@ -47,7 +60,6 @@
 
                 return (
                     <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
-                        {/* Your existing Navigation code */}
                         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                             <div className="flex items-center space-x-2">
                                 <img src="{% static 'images/logo.png' %}" alt="SkillTrai Logo" className="w-8 h-8" />
@@ -94,36 +106,6 @@
                 );
             };
 
-            const TopMiniBanner = () => {
-                return (
-                    <div className="fixed top-[72px] w-full z-40 overflow-hidden bg-gradient-to-r from-purple-50 via-white to-purple-50 py-2 border-b border-purple-100">
-                        <div className="flex animate-mini-marquee whitespace-nowrap">
-                            {[...Array(8)].map((_, index) => (
-                                <div key={index} className="flex items-center mx-8">
-                                    <div className="flex items-center space-x-2">
-                                        <span className="text-purple-600 text-sm font-medium">NEW</span>
-                                        <span className="text-gray-600 text-sm">Skilltron 1.0</span>
-                                        <span className="text-purple-400 mx-2">•</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="absolute top-0 flex animate-mini-marquee2 whitespace-nowrap">
-                            {[...Array(8)].map((_, index) => (
-                                <div key={index} className="flex items-center mx-8">
-                                    <div className="flex items-center space-x-2">
-                                        <span className="text-purple-600 text-sm font-medium">NEW</span>
-                                        <span className="text-gray-600 text-sm">Skilltron 1.0</span>
-                                        <span className="text-purple-400 mx-2">•</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                );
-            };
-
             const Hero = () => (
                 <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-white flex items-center">
                     <div className="container mx-auto px-6 pt-20">
@@ -149,6 +131,67 @@
                     </div>
                 </div>
             );
+
+            const GradientBanner = () => {
+                return (
+                    <div className="relative overflow-hidden bg-gradient-to-r from-purple-600 via-purple-800 to-purple-600 py-12">
+                        {/* Background Shapes */}
+                        <div className="absolute inset-0 overflow-hidden">
+                            <div className="absolute top-1/2 left-0 w-24 h-24 bg-white/10 rounded-full transform -translate-y-1/2 blur-xl animate-float"></div>
+                            <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-purple-300/10 rounded-full blur-xl animate-float-delayed"></div>
+                            <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-xl animate-float-slow"></div>
+                        </div>
+
+                        {/* Main Content Track */}
+                        <div className="flex animate-marquee whitespace-nowrap">
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className="flex items-center mx-12">
+                                    {/* Logo/Icon */}
+                                    <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-lg transform rotate-3">
+                                        <span className="text-purple-600 text-2xl font-bold">1.0</span>
+                                    </div>
+
+                                    {/* Text Group */}
+                                    <div className="ml-4 flex items-center">
+                                        <span className="text-4xl font-extrabold text-white mx-2 tracking-wider">
+                                            SKILL
+                                        </span>
+                                        <span className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white mx-2 tracking-wider">
+                                            TRON
+                                        </span>
+                                        <span className="text-2xl font-bold text-purple-300 ml-2">1.0</span>
+                                        <span className="text-3xl text-white/50 mx-6">★</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Duplicate Track for Seamless Loop */}
+                        <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap">
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className="flex items-center mx-12">
+                                    {/* Logo/Icon */}
+                                    <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-lg transform rotate-3">
+                                        <span className="text-purple-600 text-2xl font-bold">1.0</span>
+                                    </div>
+
+                                    {/* Text Group */}
+                                    <div className="ml-4 flex items-center">
+                                        <span className="text-4xl font-extrabold text-white mx-2 tracking-wider">
+                                            SKILL
+                                        </span>
+                                        <span className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white mx-2 tracking-wider">
+                                            TRON
+                                        </span>
+                                        <span className="text-2xl font-bold text-purple-300 ml-2">1.0</span>
+                                        <span className="text-3xl text-white/50 mx-6">★</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            };
 
             const About = () => (
                 <div className="bg-white py-20">
