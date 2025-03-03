@@ -34,41 +34,29 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <style>
         body {
-            background-color: #000000;
+            background-color: #ffffff;
         }
 
-        /* Improved responsive styles */
-        @media (max-width: 768px) {
-            .nav-items {
-                display: none;
-            }
-            .mobile-menu-button {
-                display: block;
-            }
-            .mobile-menu {
-                display: block;
-            }
-        }
-
-        /* Custom scrollbar for dark theme */
+        /* Custom scrollbar for light theme */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #0a0a0a;
+            background: #f3f4f6;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #4B0082;
+            background: #8b5cf6;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #6a1b9a;
+            background: #7c3aed;
         }
     </style>
+
 </head>
 <body>
     <div id="root"></div>
@@ -81,36 +69,43 @@
             const [isMenuOpen, setIsMenuOpen] = useState(false);
 
             return (
-                <nav className="fixed w-full bg-black z-50 border-b border-gray-900">
+                <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
                     <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
                         <div className="flex items-center space-x-2">
                             <div className="w-8 h-8 bg-purple-600 rounded-full"></div>
-                            <span className="text-white text-xl font-medium">SkillTrai</span>
+                            <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
                         </div>
 
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
-                            <a href="/" className="text-gray-300 hover:text-white transition-colors">Home</a>
-                            <a href="/courses/" className="text-gray-300 hover:text-white transition-colors">Courses</a>
-                            <a href="/trainers/" className="text-white font-medium">Trainers</a>
-                            <a href="/events/" className="text-gray-300 hover:text-white transition-colors">Events</a>
-                            <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors">
+                            <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                            <a href="/courses/"
+                               className="text-gray-600 hover:text-gray-900 transition-colors">Courses</a>
+                            <a href="/trainers/" className="text-gray-900 font-medium">Trainers</a>
+                            <a href="/events/"
+                               className="text-gray-600 hover:text-gray-900 transition-colors">Events</a>
+                            <button
+                                className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors">
                                 Let's Talk
                             </button>
                         </div>
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden text-white"
+                            className="md:hidden text-gray-900"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                         >
                             {isMenuOpen ? (
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                          d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
                             ) : (
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                          d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
                             )}
                         </button>
@@ -118,13 +113,17 @@
 
                     {/* Mobile Menu */}
                     {isMenuOpen && (
-                        <div className="md:hidden bg-black border-t border-gray-900 py-4">
+                        <div className="md:hidden bg-white shadow-lg py-4">
                             <div className="container mx-auto px-4 flex flex-col space-y-4">
-                                <a href="/" className="text-gray-300 hover:text-white py-2 transition-colors">Home</a>
-                                <a href="/courses/" className="text-gray-300 hover:text-white py-2 transition-colors">Courses</a>
-                                <a href="/trainers/" className="text-white font-medium py-2">Trainers</a>
-                                <a href="/events/" className="text-gray-300 hover:text-white py-2 transition-colors">Events</a>
-                                <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-full transition-colors">
+                                <a href="/"
+                                   className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Home</a>
+                                <a href="/courses/"
+                                   className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Courses</a>
+                                <a href="/trainers/" className="text-gray-900 font-medium py-2">Trainers</a>
+                                <a href="/events/"
+                                   className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Events</a>
+                                <button
+                                    className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-full transition-colors">
                                     Let's Talk
                                 </button>
                             </div>
@@ -135,51 +134,55 @@
         };
 
         // Trainer Profile Component
-        const TrainerProfile = ({ trainer, isExpanded, toggleExpand }) => (
-            <div className="bg-black border border-gray-900 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-purple-900">
+        const TrainerProfile = ({trainer, isExpanded, toggleExpand}) => (
+            <div className="bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl">
                 <div className="relative">
                     <img
                         src={`/api/placeholder/400/320`}
                         alt={trainer.name}
                         className="w-full h-64 object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                    <div
+                        className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/50 to-transparent"></div>
                     <div className="absolute bottom-0 left-0 p-6">
                         <h3 className="text-2xl font-bold text-white">{trainer.name}</h3>
-                        <p className="text-purple-400">{trainer.title}</p>
+                        <p className="text-purple-300">{trainer.title}</p>
                     </div>
                 </div>
 
                 <div className="p-6">
                     <div className="flex flex-wrap gap-2 mb-4">
                         {trainer.skills.map((skill, idx) => (
-                            <span key={idx} className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
-                                {skill}
-                            </span>
+                            <span key={idx}
+                                  className="bg-purple-50 border border-purple-200 text-purple-600 text-xs px-3 py-1 rounded-full">
+                        {skill}
+                    </span>
                         ))}
                     </div>
 
-                    <p className="text-gray-300 mb-6">
+                    <p className="text-gray-600 mb-6">
                         {isExpanded ? trainer.bio : `${trainer.bio.substring(0, 160)}...`}
                     </p>
 
                     <button
                         onClick={() => toggleExpand(trainer.id)}
-                        className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center"
+                        className="text-purple-600 hover:text-purple-700 text-sm font-medium flex items-center"
                     >
                         {isExpanded ? 'Show Less' : 'Read More'}
-                        <svg className={`ml-1 w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                        <svg className={`ml-1 w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                  d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                 </div>
 
                 {isExpanded && (
                     <div className="px-6 pb-6">
-                        <h4 className="text-white font-medium mb-3">Expertise & Credentials</h4>
+                        <h4 className="text-gray-900 font-medium mb-3">Expertise & Credentials</h4>
                         <ul className="space-y-2 mb-6">
                             {trainer.credentials.map((credential, idx) => (
-                                <li key={idx} className="text-gray-400 flex items-start">
+                                <li key={idx} className="text-gray-600 flex items-start">
                                     <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 mt-2"></span>
                                     <span>{credential}</span>
                                 </li>
@@ -187,10 +190,12 @@
                         </ul>
 
                         <div className="flex flex-col sm:flex-row gap-3">
-                            <a href={`mailto:${trainer.email}`} className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition flex-1 text-center">
+                            <a href={`mailto:${trainer.email}`}
+                               className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition flex-1 text-center">
                                 Contact Trainer
                             </a>
-                            <a href={trainer.calendar} className="bg-transparent border border-purple-500 text-white text-sm px-4 py-2 rounded-full hover:bg-purple-900/20 transition flex-1 text-center">
+                            <a href={trainer.calendar}
+                               className="bg-transparent border border-purple-600 text-purple-600 text-sm px-4 py-2 rounded-full hover:bg-purple-50 transition flex-1 text-center">
                                 Book Session
                             </a>
                         </div>
@@ -200,15 +205,15 @@
         );
 
         // Trainer Filter Component - Responsive scrollable on mobile
-        const TrainerFilters = ({activeFilter, setActiveFilter, filters }) => (
+        const TrainerFilters = ({activeFilter, setActiveFilter, filters}) => (
             <div className="flex justify-center mb-12 overflow-x-auto pb-2">
-                <div className="bg-black border border-gray-900 rounded-full p-1 inline-flex">
+                <div className="bg-white shadow-md rounded-full p-1 inline-flex">
                     {filters.map(filter => (
                         <button
                             key={filter.id}
                             onClick={() => setActiveFilter(filter.id)}
                             className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
-                                activeFilter === filter.id ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                                activeFilter === filter.id ? 'bg-purple-600 text-white' : 'text-gray-600 hover:text-gray-900'
                             }`}
                         >
                             {filter.name}
@@ -226,11 +231,11 @@
 
             // Filters
             const filters = [
-                { id: 'all', name: 'All Trainers' },
-                { id: 'tech', name: 'Tech & Development' },
-                { id: 'design', name: 'Design & Creative' },
-                { id: 'data', name: 'Data Science & AI' },
-                { id: 'business', name: 'Business & Marketing' }
+                {id: 'all', name: 'All Trainers'},
+                {id: 'tech', name: 'Tech & Development'},
+                {id: 'design', name: 'Design & Creative'},
+                {id: 'data', name: 'Data Science & AI'},
+                {id: 'business', name: 'Business & Marketing'}
             ];
 
             // Trainers Data
@@ -350,22 +355,20 @@
             };
 
             return (
-                <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/30 to-black text-white">
+                <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-white text-gray-900">
                     <Navigation/>
 
                     {/* Header */}
                     <div className="text-center mb-16 pt-28 px-4">
-                        <div
-                            className="inline-flex items-center bg-black border border-purple-900 rounded-full px-5 py-2 mb-6">
-                            <span className="text-sm font-medium text-purple-400">EXPERT INSTRUCTORS</span>
+                        <div className="inline-flex items-center bg-purple-100 rounded-full px-5 py-2 mb-6">
+                            <span className="text-sm font-medium text-purple-600">EXPERT INSTRUCTORS</span>
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            <span
-                                className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
-                                Learn From Industry Leaders
-                            </span>
+            <span className="bg-gradient-to-r from-purple-600 to-purple-800 text-transparent bg-clip-text">
+                Learn From Industry Leaders
+            </span>
                         </h1>
-                        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                             Our trainers bring real-world expertise and a passion for teaching to help you master the
                             skills needed for today's digital economy.
                         </p>
@@ -392,14 +395,15 @@
                         </div>
 
                         {/* Become a Trainer CTA */}
-                        <div className="text-center bg-black border border-gray-900 rounded-2xl p-6 md:p-10 mb-16">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-4">Join Our Trainer Network</h2>
-                            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                        <div className="text-center bg-purple-50 rounded-2xl p-6 md:p-10 mb-16">
+                            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">Join Our Trainer
+                                Network</h2>
+                            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                                 Are you an expert in your field with a passion for teaching? Join our community of
                                 trainers and help shape the next generation of digital professionals.
                             </p>
                             <button
-                                className="bg-white text-black px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-gray-100 transition">
+                                className="bg-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-700 transition">
                                 Apply as a Trainer
                             </button>
                         </div>
@@ -409,7 +413,7 @@
                             <h2 className="text-xl md:text-2xl font-bold mb-8 text-center">What Students Say About Our
                                 Trainers</h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div className="bg-black border border-gray-900 rounded-xl p-6">
+                                <div className="bg-white shadow-lg rounded-xl p-6">
                                     <div className="flex items-start gap-4 mb-4">
                                         <div
                                             className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex-shrink-0"></div>
@@ -423,11 +427,11 @@
                                                     </svg>
                                                 ))}
                                             </div>
-                                            <h4 className="font-medium">Alex P.</h4>
-                                            <p className="text-sm text-purple-400">Web Development Graduate</p>
+                                            <h4 className="font-medium text-gray-900">Alex P.</h4>
+                                            <p className="text-sm text-purple-600">Web Development Graduate</p>
                                         </div>
                                     </div>
-                                    <p className="text-gray-300 italic">
+                                    <p className="text-gray-600 italic">
                                         "Ikhlas doesn't just teach code, he teaches you how to think like a developer.
                                         His real-world examples and patient guidance made all the difference in my
                                         journey."
@@ -487,7 +491,7 @@
                     </div>
 
                     {/* Footer */}
-                    <div className="text-center text-sm text-gray-500 pt-8 border-t border-gray-900 pb-8">
+                    <div className="text-center text-sm text-gray-500 pt-8 border-t border-gray-200 pb-8">
                         <p>© 2025 SkillTrai. All rights reserved.</p>
                         <p className="mt-2">Empowering the next generation of tech professionals.</p>
                     </div>
@@ -497,7 +501,7 @@
 
         // Render the app
         ReactDOM.render(
-            <TrainersPage />,
+            <TrainersPage/>,
             document.getElementById('root')
         );
     </script>

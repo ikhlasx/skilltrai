@@ -31,39 +31,26 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <style>
         body {
-            background-color: #000000;
+            background-color: #ffffff;
         }
 
-        /* Improved responsive styles */
-        @media (max-width: 768px) {
-            .nav-items {
-                display: none;
-            }
-            .mobile-menu-button {
-                display: block;
-            }
-            .mobile-menu {
-                display: block;
-            }
-        }
-
-        /* Custom scrollbar for dark theme */
+        /* Custom scrollbar for light theme */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #0a0a0a;
+            background: #f3f4f6;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #4B0082;
+            background: #8b5cf6;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #6a1b9a;
+            background: #7c3aed;
         }
     </style>
 </head>
@@ -78,36 +65,43 @@
             const [isMenuOpen, setIsMenuOpen] = useState(false);
 
             return (
-                <nav className="fixed w-full bg-black z-50 border-b border-gray-900">
+                <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
                     <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
                         <div className="flex items-center space-x-2">
                             <div className="w-8 h-8 bg-purple-600 rounded-full"></div>
-                            <span className="text-white text-xl font-medium">SkillTrai</span>
+                            <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
                         </div>
 
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
-                            <a href="/" className="text-gray-300 hover:text-white transition-colors">Home</a>
-                            <a href="/courses/" className="text-white font-medium">Courses</a>
-                            <a href="/trainers/" className="text-gray-300 hover:text-white transition-colors">Trainers</a>
-                            <a href="/events/" className="text-gray-300 hover:text-white transition-colors">Events</a>
-                            <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors">
+                            <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                            <a href="/courses/" className="text-gray-900 font-medium">Courses</a>
+                            <a href="/trainers/"
+                               className="text-gray-600 hover:text-gray-900 transition-colors">Trainers</a>
+                            <a href="/events/"
+                               className="text-gray-600 hover:text-gray-900 transition-colors">Events</a>
+                            <button
+                                className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors">
                                 Let's Talk
                             </button>
                         </div>
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden text-white"
+                            className="md:hidden text-gray-900"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                         >
                             {isMenuOpen ? (
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                          d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
                             ) : (
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                          d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
                             )}
                         </button>
@@ -115,13 +109,17 @@
 
                     {/* Mobile Menu */}
                     {isMenuOpen && (
-                        <div className="md:hidden bg-black border-t border-gray-900 py-4">
+                        <div className="md:hidden bg-white shadow-lg py-4">
                             <div className="container mx-auto px-4 flex flex-col space-y-4">
-                                <a href="/" className="text-gray-300 hover:text-white py-2 transition-colors">Home</a>
-                                <a href="/courses/" className="text-white font-medium py-2">Courses</a>
-                                <a href="/trainers/" className="text-gray-300 hover:text-white py-2 transition-colors">Trainers</a>
-                                <a href="/events/" className="text-gray-300 hover:text-white py-2 transition-colors">Events</a>
-                                <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-full transition-colors">
+                                <a href="/"
+                                   className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Home</a>
+                                <a href="/courses/" className="text-gray-900 font-medium py-2">Courses</a>
+                                <a href="/trainers/"
+                                   className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Trainers</a>
+                                <a href="/events/"
+                                   className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Events</a>
+                                <button
+                                    className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-full transition-colors">
                                     Let's Talk
                                 </button>
                             </div>
@@ -133,58 +131,58 @@
 
         // Course Brochure Component
         const CourseBrochure = () => {
-          const [activeTab, setActiveTab] = useState('overview');
+            const [activeTab, setActiveTab] = useState('overview');
 
-          const courses = [
-            {
-              id: 'design',
-              title: 'Design & Digital Marketing',
-              icon: '🎨',
-              description: 'Master the art of visual communication and digital marketing strategies to create compelling brand experiences.',
-              skills: ['UI/UX Design', 'Graphic Design', 'Social Media Marketing', 'SEO', 'Content Strategy'],
-              duration: '16 weeks',
-              level: 'Beginner to Advanced',
-              projects: 'Portfolio of 5+ real-world projects',
-              career: 'Digital Designer, Marketing Specialist, Brand Manager'
-            },
-            {
-              id: 'ai-dev',
-              title: 'AI Developer',
-              icon: '🤖',
-              description: 'Learn to develop AI-powered applications and solutions using modern frameworks and methodologies.',
-              skills: ['Python', 'Machine Learning', 'Neural Networks', 'Natural Language Processing', 'Computer Vision'],
-              duration: '24 weeks',
-              level: 'Intermediate',
-              projects: '3 capstone projects including a deployable AI application',
-              career: 'AI Developer, ML Engineer, Software Engineer'
-            },
-            {
-              id: 'ai-eng',
-              title: 'AI Engineer',
-              icon: '⚙️',
-              description: 'Dive deep into AI engineering principles to design, implement and optimize complex AI systems.',
-              skills: ['Advanced ML Algorithms', 'Deep Learning', 'Model Deployment', 'MLOps', 'AI Ethics'],
-              duration: '32 weeks',
-              level: 'Advanced',
-              projects: 'Enterprise-grade AI system with deployment pipeline',
-              career: 'AI Engineer, Research Scientist, Technical Lead'
-            },
-            {
-              id: 'data',
-              title: 'Data Analysis',
-              icon: '📊',
-              description: 'Transform raw data into actionable insights through statistical analysis and visualization techniques.',
-              skills: ['Data Wrangling', 'Statistical Analysis', 'Data Visualization', 'SQL', 'Business Intelligence'],
-              duration: '20 weeks',
-              level: 'Beginner to Intermediate',
-              projects: 'Industry-specific data analysis portfolio',
-              career: 'Data Analyst, Business Analyst, BI Specialist'
-            },
-            {
-              id: 'robotics',
-              title: 'Robotics and IoT',
-              icon: '🦾',
-              description: 'Build smart physical systems by combining hardware engineering with software intelligence.',
+            const courses = [
+                {
+                    id: 'design',
+                    title: 'Design & Digital Marketing',
+                    icon: '🎨',
+                    description: 'Master the art of visual communication and digital marketing strategies to create compelling brand experiences.',
+                    skills: ['UI/UX Design', 'Graphic Design', 'Social Media Marketing', 'SEO', 'Content Strategy'],
+                    duration: '16 weeks',
+                    level: 'Beginner to Advanced',
+                    projects: 'Portfolio of 5+ real-world projects',
+                    career: 'Digital Designer, Marketing Specialist, Brand Manager'
+                },
+                {
+                    id: 'ai-dev',
+                    title: 'AI Developer',
+                    icon: '🤖',
+                    description: 'Learn to develop AI-powered applications and solutions using modern frameworks and methodologies.',
+                    skills: ['Python', 'Machine Learning', 'Neural Networks', 'Natural Language Processing', 'Computer Vision'],
+                    duration: '24 weeks',
+                    level: 'Intermediate',
+                    projects: '3 capstone projects including a deployable AI application',
+                    career: 'AI Developer, ML Engineer, Software Engineer'
+                },
+                {
+                    id: 'ai-eng',
+                    title: 'AI Engineer',
+                    icon: '⚙️',
+                    description: 'Dive deep into AI engineering principles to design, implement and optimize complex AI systems.',
+                    skills: ['Advanced ML Algorithms', 'Deep Learning', 'Model Deployment', 'MLOps', 'AI Ethics'],
+                    duration: '32 weeks',
+                    level: 'Advanced',
+                    projects: 'Enterprise-grade AI system with deployment pipeline',
+                    career: 'AI Engineer, Research Scientist, Technical Lead'
+                },
+                {
+                    id: 'data',
+                    title: 'Data Analysis',
+                    icon: '📊',
+                    description: 'Transform raw data into actionable insights through statistical analysis and visualization techniques.',
+                    skills: ['Data Wrangling', 'Statistical Analysis', 'Data Visualization', 'SQL', 'Business Intelligence'],
+                    duration: '20 weeks',
+                    level: 'Beginner to Intermediate',
+                    projects: 'Industry-specific data analysis portfolio',
+                    career: 'Data Analyst, Business Analyst, BI Specialist'
+                },
+                {
+                    id: 'robotics',
+                    title: 'Robotics and IoT',
+                    icon: '🦾',
+                    description: 'Build smart physical systems by combining hardware engineering with software intelligence.',
               skills: ['Embedded Systems', 'Sensor Integration', 'Control Systems', 'IoT Protocols', 'Robotics Design'],
               duration: '28 weeks',
               level: 'Intermediate to Advanced',
@@ -197,20 +195,20 @@
 
           return (
               <div
-                  className="min-h-screen bg-gradient-to-br from-black via-purple-900/30 to-black text-white p-4 md:p-6">
+                  className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-white text-gray-900 p-4 md:p-6">
                   <div className="max-w-6xl mx-auto">
                       {/* Header */}
                       <div className="text-center mb-16 pt-28">
                           <div
-                              className="inline-flex items-center bg-black border border-purple-900 rounded-full px-5 py-2 mb-6">
-                              <span className="text-sm font-medium text-purple-400">COURSE CATALOG</span>
+                              className="inline-flex items-center bg-purple-100 rounded-full px-5 py-2 mb-6">
+                              <span className="text-sm font-medium text-purple-600">COURSE CATALOG</span>
                           </div>
                           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                    <span className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
-                      Future-Ready Skills
-                    </span>
+                <span className="bg-gradient-to-r from-purple-600 to-purple-800 text-transparent bg-clip-text">
+                    Future-Ready Skills
+                </span>
                           </h1>
-                          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                               Comprehensive courses designed to transform beginners into industry-ready professionals
                               through hands-on projects and expert mentorship.
                           </p>
@@ -218,11 +216,11 @@
 
                       {/* Navigation Tabs */}
                       <div className="flex justify-center mb-12 overflow-x-auto pb-2">
-                          <div className="bg-black border border-gray-900 rounded-full p-1 inline-flex">
+                          <div className="bg-white shadow-md rounded-full p-1 inline-flex">
                               <button
                                   onClick={() => setActiveTab('overview')}
                                   className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
-                                      activeTab === 'overview' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                                      activeTab === 'overview' ? 'bg-purple-600 text-white' : 'text-gray-600 hover:text-gray-900'
                                   }`}
                               >
                                   Overview
@@ -230,7 +228,7 @@
                               <button
                                   onClick={() => setActiveTab('curriculum')}
                                   className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
-                                      activeTab === 'curriculum' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                                      activeTab === 'curriculum' ? 'bg-purple-600 text-white' : 'text-gray-600 hover:text-gray-900'
                                   }`}
                               >
                                   Curriculum
@@ -238,20 +236,19 @@
                               <button
                                   onClick={() => setActiveTab('careers')}
                                   className={`px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition whitespace-nowrap ${
-                                      activeTab === 'careers' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                                      activeTab === 'careers' ? 'bg-purple-600 text-white' : 'text-gray-600 hover:text-gray-900'
                                   }`}
                               >
                                   Career Paths
                               </button>
                           </div>
                       </div>
-
                       {/* Course Grid */}
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
                           {courses.map((course) => (
                               <div
                                   key={course.id}
-                                  className="bg-black border border-gray-900 rounded-xl overflow-hidden transition-all duration-300 hover:border-purple-900"
+                                  className="bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
                                   onMouseEnter={() => setHoveredCourse(course.id)}
                                   onMouseLeave={() => setHoveredCourse(null)}
                               >
@@ -259,28 +256,28 @@
                                       <div className="flex justify-between items-start mb-4">
                                           <div className="text-4xl mb-4">{course.icon}</div>
                                           <span
-                                              className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
-                            {course.duration}
-                          </span>
+                                              className="bg-purple-100 text-purple-600 text-xs px-3 py-1 rounded-full">
+                        {course.duration}
+                    </span>
                                       </div>
-                                      <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
-                                      <p className="text-gray-400 text-sm mb-6">{course.description}</p>
+                                      <h3 className="text-xl font-semibold mb-3 text-gray-900">{course.title}</h3>
+                                      <p className="text-gray-600 text-sm mb-6">{course.description}</p>
 
                                       <div className="space-y-4">
                                           <div>
-                                              <h4 className="text-purple-400 text-xs uppercase tracking-wide mb-2">Key
+                                              <h4 className="text-purple-600 text-xs uppercase tracking-wide mb-2">Key
                                                   Skills</h4>
                                               <div className="flex flex-wrap gap-2">
                                                   {course.skills.slice(0, 3).map((skill, idx) => (
                                                       <span key={idx}
-                                                            className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
-                                  {skill}
+                                                            className="bg-purple-50 border border-purple-200 text-purple-600 text-xs px-3 py-1 rounded-full">
+                                    {skill}
                                 </span>
                                                   ))}
                                                   {course.skills.length > 3 && (
                                                       <span
-                                                          className="bg-black border border-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">
-                                  +{course.skills.length - 3} more
+                                                          className="bg-purple-50 border border-purple-200 text-purple-600 text-xs px-3 py-1 rounded-full">
+                                    +{course.skills.length - 3} more
                                 </span>
                                                   )}
                                               </div>
@@ -301,8 +298,8 @@
                                   </div>
 
                                   <div
-                                      className="bg-black border-t border-gray-900 p-4 flex justify-between items-center">
-                                      <span className="text-sm text-gray-300">Enrollment Open</span>
+                                      className="bg-gray-50 border-t border-gray-100 p-4 flex justify-between items-center">
+                                      <span className="text-sm text-gray-600">Enrollment Open</span>
                                       <button
                                           className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition">
                                           Learn More
@@ -314,21 +311,21 @@
 
                       {/* Curriculum Preview */}
                       {activeTab === 'curriculum' && (
-                          <div className="bg-black border border-gray-900 rounded-2xl p-6 md:p-8 mb-16">
-                              <h2 className="text-2xl font-bold mb-6">Curriculum Highlights</h2>
+                          <div className="bg-white shadow-lg rounded-2xl p-6 md:p-8 mb-16">
+                              <h2 className="text-2xl font-bold mb-6 text-gray-900">Curriculum Highlights</h2>
                               <div className="space-y-6">
                                   {courses.map((course) => (
                                       <div key={course.id} className="border-l-2 border-purple-600 pl-6 py-2">
-                                          <h3 className="text-lg font-medium mb-2">{course.title}</h3>
+                                          <h3 className="text-lg font-medium mb-2 text-gray-900">{course.title}</h3>
                                           <ul className="space-y-2">
                                               {course.skills.map((skill, idx) => (
-                                                  <li key={idx} className="text-gray-400 flex items-center">
+                                                  <li key={idx} className="text-gray-600 flex items-center">
                                                       <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
                                                       {skill}
                                                   </li>
                                               ))}
                                           </ul>
-                                          <p className="mt-3 text-sm text-purple-400">
+                                          <p className="mt-3 text-sm text-purple-600">
                                               Final Project: {course.projects}
                                           </p>
                                       </div>
@@ -370,9 +367,10 @@
                       )}
 
                       {/* CTA Section */}
-                      <div className="text-center bg-black border border-gray-900 rounded-2xl p-6 md:p-10 mb-16">
-                          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Future?</h2>
-                          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                      <div className="text-center bg-purple-50 rounded-2xl p-6 md:p-10 mb-16">
+                          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">Ready to Transform Your
+                              Future?</h2>
+                          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                               Join thousands of students who have launched successful careers through our cutting-edge
                               curriculum and industry partnerships.
                           </p>
@@ -382,7 +380,7 @@
                                   Download Full Brochure
                               </button>
                               <button
-                                  className="bg-transparent border border-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-900/20 transition">
+                                  className="bg-transparent border border-purple-600 text-purple-600 px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-50 transition">
                                   Schedule Consultation
                               </button>
                           </div>
@@ -412,7 +410,7 @@
                   </div>
 
                   {/* Footer */}
-                  <div className="text-center text-sm text-gray-500 pt-8 border-t border-gray-900 pb-8">
+                  <div className="text-center text-sm text-gray-500 pt-8 border-t border-gray-200 pb-8">
                       <p>© 2025 SkillTrai. All rights reserved.</p>
                       <p className="mt-2">Empowering the next generation of tech professionals.</p>
                   </div>
@@ -423,16 +421,16 @@
         // Main App Component
         const CoursesPage = () => {
             return (
-                    <div className="bg-black min-h-screen">
-                    <Navigation />
-                    <CourseBrochure />
+                <div className="bg-black min-h-screen">
+                    <Navigation/>
+                    <CourseBrochure/>
                 </div>
             );
         };
 
         // Render the app
         ReactDOM.render(
-            <CoursesPage />,
+            <CoursesPage/>,
             document.getElementById('root')
         );
     </script>
