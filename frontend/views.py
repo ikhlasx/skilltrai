@@ -11,6 +11,13 @@ def home(request):
     return render(request, 'index.html')
 
 
+def about(request):
+    """
+    View to render the about page with company information, vision, mission, and team members.
+    """
+    return render(request, 'about.html')
+
+
 def courses(request):
     return render(request, 'courses.html')
 
@@ -70,8 +77,12 @@ def register_api(request):
             #     except WebinarDate.DoesNotExist:
             #         pass
 
-            # Optionally send a confirmation email
-            # send_confirmation_email(data['email'], data['fullName'])
+            # Send a confirmation email
+            try:
+                send_confirmation_email(data['email'], data['fullName'])
+            except Exception as e:
+                # Log the error, but don't stop the registration process
+                print(f"Error sending confirmation email: {str(e)}")
 
             # Return success response
             return JsonResponse({'success': True, 'message': 'Registration successful!'})
