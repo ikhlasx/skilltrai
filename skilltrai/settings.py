@@ -8,7 +8,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 # Add this line - it was missing
 ROOT_URLCONF = 'skilltrai.urls'
 
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1', 'www.skilltrai.com', 'skilltrai.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
