@@ -79,15 +79,15 @@
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
                             <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
-                            <a href="/courses/"
-                               className="text-gray-600 hover:text-gray-900 transition-colors">Courses</a>
-                            <a href="/trainers/" className="text-gray-900 font-medium">Trainers</a>
+                            <a href="/courses/" className="text-gray-900 font-medium">Courses</a>
+                            <a href="/trainers/"
+                               className="text-gray-600 hover:text-gray-900 transition-colors">Trainers</a>
                             <a href="/events/"
                                className="text-gray-600 hover:text-gray-900 transition-colors">Events</a>
-                            <button
-                                className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors">
-                                Let's Talk
-                            </button>
+                            <a href="/register/"
+                               className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors">
+                                Register
+                            </a>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -117,15 +117,15 @@
                             <div className="container mx-auto px-4 flex flex-col space-y-4">
                                 <a href="/"
                                    className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Home</a>
-                                <a href="/courses/"
-                                   className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Courses</a>
-                                <a href="/trainers/" className="text-gray-900 font-medium py-2">Trainers</a>
+                                <a href="/courses/" className="text-gray-900 font-medium py-2">Courses</a>
+                                <a href="/trainers/"
+                                   className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Trainers</a>
                                 <a href="/events/"
                                    className="text-gray-600 hover:text-gray-900 py-2 transition-colors">Events</a>
-                                <button
-                                    className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-full transition-colors">
-                                    Let's Talk
-                                </button>
+                                <a href="/register/"
+                                   className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-full text-center transition-colors">
+                                    Register
+                                </a>
                             </div>
                         </div>
                     )}
@@ -219,6 +219,71 @@
                             {filter.name}
                         </button>
                     ))}
+                </div>
+            </div>
+        );
+
+        // Trainer Program Info Component (NEW)
+        const TrainerProgramInfo = () => (
+            <div className="bg-gradient-to-r from-purple-50 to-white rounded-2xl p-6 md:p-10 mb-16">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">What is a Trainer Program?</h2>
+                    <p className="text-gray-700 text-lg mb-6">
+                        The SkillTrai Trainer Program is a professional development pathway that allows skilled individuals to join our teaching team after demonstrating expertise in their field. Selected trainers become part of the company based on their engagement, performance, and technical proficiency throughout the evaluation process.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                        <div className="bg-white shadow-lg rounded-xl p-6">
+                            <h3 className="text-xl font-bold text-gray-900 mb-4">Benefits of Being a Skilltrai Trainer</h3>
+                            <ul className="space-y-3">
+                                <li className="flex items-start">
+                                    <span className="text-purple-600 mr-2 mt-1">✓</span>
+                                    <span className="text-gray-700">Earn commission from students under your mentorship</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="text-purple-600 mr-2 mt-1">✓</span>
+                                    <span className="text-gray-700">Receive outsourced client work directly through Skilltrai</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="text-purple-600 mr-2 mt-1">✓</span>
+                                    <span className="text-gray-700">Retain a substantial share of project fees, providing stable income in the freelance ecosystem</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="text-purple-600 mr-2 mt-1">✓</span>
+                                    <span className="text-gray-700">Access to our professional network and continued learning opportunities</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="text-purple-600 mr-2 mt-1">✓</span>
+                                    <span className="text-gray-700">Build your professional reputation and portfolio</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className="bg-white shadow-lg rounded-xl p-6">
+                            <h3 className="text-xl font-bold text-gray-900 mb-4">How to Enroll as a Trainer</h3>
+                            <p className="text-gray-700 mb-4">There are two primary pathways to become a SkillTrai trainer:</p>
+
+                            <div className="mb-4">
+                                <h4 className="font-semibold text-gray-900">1. Course Graduate Path:</h4>
+                                <p className="text-gray-700 ml-5">Successfully complete one of our courses and excel in the subsequent trainer interview process.</p>
+                            </div>
+
+                            <div className="mb-4">
+                                <h4 className="font-semibold text-gray-900">2. Direct Application:</h4>
+                                <p className="text-gray-700 ml-5">Experienced professionals can apply directly if they meet the technical and teaching requirements for available positions.</p>
+                            </div>
+
+                            <p className="text-gray-700 mt-4">
+                                The selection process includes a technical assessment, teaching demonstration, and interview to ensure candidates have both the expertise and ability to effectively transfer knowledge to students.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center">
+                        <button className="bg-purple-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-purple-700 transition">
+                            Apply to Become a Trainer
+                        </button>
+                    </div>
                 </div>
             </div>
         );
@@ -394,19 +459,8 @@
                             ))}
                         </div>
 
-                        {/* Become a Trainer CTA */}
-                        <div className="text-center bg-purple-50 rounded-2xl p-6 md:p-10 mb-16">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">Join Our Trainer
-                                Network</h2>
-                            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                                Are you an expert in your field with a passion for teaching? Join our community of
-                                trainers and help shape the next generation of digital professionals.
-                            </p>
-                            <button
-                                className="bg-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-purple-700 transition">
-                                Apply as a Trainer
-                            </button>
-                        </div>
+                        {/* NEW: Trainer Program Info Section */}
+                        <TrainerProgramInfo />
 
                         {/* Testimonials */}
                         <div className="mb-16">
