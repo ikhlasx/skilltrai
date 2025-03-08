@@ -131,64 +131,64 @@
             );
 
             const VisionMission = () => (
-                <div className="py-20 bg-white">
-                    <div className="container mx-auto px-6 max-w-6xl">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {/* Vision Section */}
-                            <div className="bg-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
-                                <p className="text-gray-700 text-lg leading-relaxed">
-                                    To empower individuals with the skills, knowledge, and mindset
-                                    needed to thrive in the independent digital workforce, creating a
-                                    global community of successful freelance professionals.
-                                </p>
-                            </div>
-
-                            {/* Mission Section */}
-                            <div className="bg-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
-                                <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                                    Our mission is to provide comprehensive training that
-                                    combines traditional education with practical experience,
-                                    enabling our students to build successful freelance careers in
-                                    their chosen fields.
-                                </p>
-
-                                <h3 className="text-xl font-semibold text-gray-900 mb-3">Core Objectives</h3>
-                                <ul className="space-y-2 mb-6">
-                                    <li className="flex items-center">
-                                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                                        <span className="text-gray-700">Deliver industry-relevant skills training</span>
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                                        <span className="text-gray-700">Foster independent work culture</span>
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                                        <span className="text-gray-700">Build professional excellence</span>
-                                    </li>
-                                </ul>
-
-                                <h3 className="text-xl font-semibold text-gray-900 mb-3">Values</h3>
-                                <ul className="space-y-2">
-                                    <li className="flex items-center">
-                                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                                        <span className="text-gray-700">Innovation in education</span>
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                                        <span className="text-gray-700">Practical skill development</span>
-                                    </li>
-                                    <li className="flex items-center">
-                                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                                        <span className="text-gray-700">Student-centered growth</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+              <div className="py-20 bg-white">
+                <div className="container mx-auto px-6 max-w-6xl">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    {/* Vision Section - Removed extra space */}
+                    <div className="bg-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow h-auto">
+                      <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
+                      <p className="text-gray-700 text-lg leading-relaxed">
+                        To empower individuals with the skills, knowledge, and mindset
+                        needed to thrive in the independent digital workforce, creating a
+                        global community of successful freelance professionals.
+                      </p>
                     </div>
+
+                    {/* Mission Section */}
+                    <div className="bg-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow h-auto">
+                      <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                      <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                        Our mission is to provide comprehensive training that
+                        combines traditional education with practical experience,
+                        enabling our students to build successful freelance careers in
+                        their chosen fields.
+                      </p>
+
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3">Core Objectives</h3>
+                      <ul className="space-y-2 mb-6">
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                          <span className="text-gray-700">Deliver industry-relevant skills training</span>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                          <span className="text-gray-700">Foster independent work culture</span>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                          <span className="text-gray-700">Build professional excellence</span>
+                        </li>
+                      </ul>
+
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3">Values</h3>
+                      <ul className="space-y-2">
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                          <span className="text-gray-700">Innovation in education</span>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                          <span className="text-gray-700">Practical skill development</span>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                          <span className="text-gray-700">Student-centered growth</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
+              </div>
             );
 
             const LearningApproach = () => (
@@ -247,20 +247,48 @@
             );
 
             const SimpleSkilltronBanner = () => {
+                const [isPaused, setIsPaused] = React.useState(false);
+
                 return (
-                    <div className="bg-purple-600 py-4 overflow-hidden">
-                        <div className="container mx-auto flex items-center justify-center gap-6">
-                            <div className="flex items-center">
-                                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                                    <span className="text-purple-600 text-sm font-bold">1.0</span>
-                                </div>
-                                <div className="ml-2 flex items-center">
-                                    <span className="text-xl font-bold text-white">SKILL</span>
-                                    <span className="text-xl font-bold text-white/90">TRON</span>
-                                    <span className="text-sm font-bold text-purple-300 ml-1">1.0</span>
-                                </div>
+                    <div className="bg-purple-600 py-4 overflow-hidden relative">
+                        <div
+                            className="flex items-center"
+                            onMouseEnter={() => setIsPaused(true)}
+                            onMouseLeave={() => setIsPaused(false)}
+                        >
+                            {/* First scroll container - moves left */}
+                            <div className={`flex items-center space-x-16 ${isPaused ? '' : 'animate-marquee'} whitespace-nowrap`}>
+                                {Array(10).fill(null).map((_, index) => (
+                                    <div key={`first-${index}`} className="flex items-center">
+                                        <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                                            <span className="text-purple-600 text-sm font-bold">1.0</span>
+                                        </div>
+                                        <div className="ml-2 flex items-center">
+                                            <span className="text-xl font-bold text-white">SKILL</span>
+                                            <span className="text-xl font-bold text-white/90">TRON</span>
+                                            <span className="text-sm font-bold text-purple-300 ml-1">1.0</span>
+                                        </div>
+                                        <span className="text-sm text-white font-medium px-4 py-1 bg-purple-700 rounded-full ml-4">Coming Soon</span>
+                                    </div>
+                                ))}
                             </div>
-                            <span className="text-sm text-white font-medium px-4 py-1 bg-purple-700 rounded-full">Coming Soon</span>
+
+                            {/* Duplicate container for seamless scrolling */}
+                            <div className={`flex items-center space-x-16 ${isPaused ? '' : 'animate-marquee2'} whitespace-nowrap absolute left-full`}>
+                                {Array(10).fill(null).map((_, index) => (
+                                    <div key={`second-${index}`} className="flex items-center">
+                                        <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                                            <span className="text-purple-600 text-sm font-bold">1.0</span>
+                                        </div>
+                                        <div className="ml-2 flex items-center">
+                                            <span className="text-xl font-bold text-white">SKILL</span>
+                                            <span className="text-xl font-bold text-white/90">TRON</span>
+                                            <span className="text-sm font-bold text-purple-300 ml-1">1.0</span>
+                                        </div>
+                                        <span className="text-sm text-white font-medium px-4 py-1 bg-purple-700 rounded-full ml-4">Coming Soon</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 );
