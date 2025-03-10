@@ -134,13 +134,15 @@
         };
 
         // Trainer Profile Component
+        // Updated Trainer Profile Component with LinkedIn and Gmail icons
         const TrainerProfile = ({trainer, isExpanded, toggleExpand}) => (
             <div className="bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl">
                 <div className="relative">
                     <img
-                        src={`/api/placeholder/400/320`}
+                        src={`{% static 'images/${trainer.image}' %}`}
                         alt={trainer.name}
                         className="w-full h-64 object-cover object-center"
+                        onError={e => { e.target.src = '/api/placeholder/400/320'; e.target.onError = null; }}
                     />
                     <div
                         className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/50 to-transparent"></div>
@@ -190,10 +192,23 @@
                         </ul>
 
                         <div className="flex flex-col sm:flex-row gap-3">
-                            <a href={`mailto:${trainer.email}`}
-                               className="bg-purple-600 hover:bg-purple-700 text-white text-sm px-4 py-2 rounded-full transition flex-1 text-center">
-                                Contact Trainer
-                            </a>
+                            <div className="flex gap-3 mb-3 sm:mb-0">
+                                <a href={trainer.linkedin || '#'}
+                                   target="_blank" rel="noopener noreferrer"
+                                   className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-full transition flex items-center justify-center">
+                                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                    </svg>
+                                    LinkedIn
+                                </a>
+                                <a href={`mailto:${trainer.email}`}
+                                   className="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2 rounded-full transition flex items-center justify-center">
+                                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                    </svg>
+                                    Email
+                                </a>
+                            </div>
                             <a href={trainer.calendar}
                                className="bg-transparent border border-purple-600 text-purple-600 text-sm px-4 py-2 rounded-full hover:bg-purple-50 transition flex-1 text-center">
                                 Book Session
@@ -289,123 +304,284 @@
         );
 
         // Trainers Page Component
-        const TrainersPage = () => {
-            // State
-            const [expandedTrainer, setExpandedTrainer] = useState(null);
-            const [activeFilter, setActiveFilter] = useState('all');
+            const TrainersPage = () => {
+                // State
+                const [expandedTrainer, setExpandedTrainer] = useState(null);
+                const [activeFilter, setActiveFilter] = useState('all');
 
-            // Filters
+                // Filters
+            // Updated filters with your categories
             const filters = [
                 {id: 'all', name: 'All Trainers'},
-                {id: 'tech', name: 'Tech & Development'},
-                {id: 'design', name: 'Design & Creative'},
-                {id: 'data', name: 'Data Science & AI'},
-                {id: 'business', name: 'Business & Marketing'}
+                {id: 'tech', name: 'Technology & Engineering'},
+                {id: 'data', name: 'Data Analysis'},
+                {id: 'design', name: 'Design & Content Creation'}
             ];
 
-            // Trainers Data
+                // Trainers Data
             const trainersData = [
+                // AI Developer Trainers
                 {
                     id: 1,
-                    name: "Ikhlas Ahmed",
-                    title: "Full-Stack Development Lead",
-                    image: "ikhlas.jpg",
+                    name: "Akshay",
+                    title: "Lead AI Developer Trainer",
+                    image: "akshay.jpg",
                     category: "tech",
-                    skills: ["React", "Node.js", "DevOps", "System Architecture"],
-                    bio: "Ikhlas is a seasoned full-stack developer with over 8 years of experience building scalable web applications. As the lead trainer for web development, he specializes in the MERN stack and has helped over 200 students transition into professional development roles. His teaching philosophy centers on project-based learning and real-world applications.",
+                    skills: ["Artificial Intelligence", "Python", "Machine Learning", "Deep Learning"],
+                    bio: "Akshay leads our AI Developer training program, bringing extensive experience in building AI-powered applications and solutions. His teaching approach combines theoretical concepts with hands-on projects, ensuring students develop practical skills they can immediately apply in real-world scenarios.",
                     credentials: [
-                        "Former Senior Developer at TechGiant Inc.",
-                        "Creator of 3 popular open-source libraries",
-                        "Master's in Computer Science from Tech University",
-                        "Certified AWS Solutions Architect"
+                        "Expertise in Python and AI frameworks",
+                        "Experience in developing enterprise AI solutions",
+                        "Background in computer vision and NLP",
+                        "Strong track record of mentoring junior developers"
                     ],
-                    email: "ikhlas@skilltrai.com",
-                    calendar: "#schedule-ikhlas"
+                    email: "akshay@skilltrai.com",
+                    calendar: "#schedule-akshay",
+                    linkedin: "https://www.linkedin.com/"
                 },
                 {
                     id: 2,
-                    name: "Afnan Khan",
-                    title: "UI/UX Design Specialist",
-                    image: "afnan.jpg",
-                    category: "design",
-                    skills: ["User Experience", "Interface Design", "Figma", "Design Systems"],
-                    bio: "Afnan brings a unique blend of aesthetic sensibility and technical knowledge to her design courses. With experience leading design teams at both startups and established companies, she provides students with insights into creating interfaces that are both beautiful and functional. Her workshops focus on the entire design process from research to implementation.",
+                    name: "Ikhlas",
+                    title: "AI Developer Trainer",
+                    image: "ikhlas.jpg",
+                    category: "tech",
+                    skills: ["AI Engineering", "Python", "Full-Stack Development", "System Architecture"],
+                    bio: "Ikhlas combines his expertise in AI development and full-stack engineering to provide students with a comprehensive understanding of building end-to-end AI solutions. His courses focus on practical implementation, helping students transition from theoretical knowledge to building production-ready AI applications.",
                     credentials: [
-                        "Former Design Lead at CreativeStudio",
-                        "Designed interfaces used by millions of users",
-                        "Bachelor's in Human-Computer Interaction",
-                        "Adobe Certified Expert"
+                        "Works as AI Engineer at Impex",
+                        "BTech CSE graduate from KTU",
+                        "Experience in MERN stack development",
+                        "Specializes in integrating AI with web applications"
                     ],
-                    email: "afnan@skilltrai.com",
-                    calendar: "#schedule-afnan"
+                    email: "ikhlas110@gmail.com",
+                    calendar: "#schedule-ikhlas",
+                    linkedin: "https://www.linkedin.com/in/ikhlas-pv/"
                 },
+
+                // Robotics Trainers
                 {
                     id: 3,
-                    name: "Jasim Rahman",
-                    title: "AI & Machine Learning Expert",
-                    image: "jasim.jpg",
-                    category: "data",
-                    skills: ["Machine Learning", "Python", "TensorFlow", "Computer Vision"],
-                    bio: "Jasim specializes in making complex AI concepts accessible to learners at all levels. With a background in research and industry applications, he guides students through the theoretical foundations and practical implementations of machine learning systems. His courses have a strong focus on ethical AI development and real-world problem solving.",
+                    name: "Fuad",
+                    title: "Lead Robotics Trainer",
+                    image: "fuad.jpg",
+                    category: "tech",
+                    skills: ["Robotics", "IoT", "Embedded Systems", "Control Systems"],
+                    bio: "Fuad leads our Robotics training program, bringing expertise in building smart physical systems by combining hardware engineering with software intelligence. His hands-on teaching approach ensures students gain practical experience in designing, building, and programming robotic systems.",
                     credentials: [
-                        "PhD in Artificial Intelligence",
-                        "Published researcher with 15+ peer-reviewed papers",
-                        "Former AI Research Scientist at DataTech",
-                        "Creator of popular ML educational series with 1M+ views"
+                        "Extensive experience in robotics design and development",
+                        "Expert in embedded systems programming",
+                        "Background in mechatronics and automation",
+                        "Multiple successful robotics projects delivered"
                     ],
-                    email: "jasim@skilltrai.com",
-                    calendar: "#schedule-jasim"
+                    email: "fuad@skilltrai.com",
+                    calendar: "#schedule-fuad",
+                    linkedin: "https://www.linkedin.com/"
                 },
                 {
                     id: 4,
-                    name: "Sarah Johnson",
-                    title: "Digital Marketing Strategist",
-                    image: "sarah.jpg",
-                    category: "business",
-                    skills: ["SEO", "Content Marketing", "Analytics", "Growth Hacking"],
-                    bio: "Sarah has helped countless businesses optimize their digital presence through data-driven marketing strategies. Her practical approach combines analytical thinking with creative execution, enabling students to develop comprehensive marketing plans. She specializes in helping freelancers and small businesses achieve maximum impact with limited resources.",
+                    name: "Afnan",
+                    title: "Robotics Trainer & Video Lead",
+                    image: "afnan.jpg",
+                    category: "tech",
+                    skills: ["Robotics Engineering", "Electronics", "Video Production", "Hardware Design"],
+                    bio: "Afnan brings his expertise in robotics engineering and electronics to help students build practical robotics skills. With a background in government polytechnic education and professional experience as a Robotics Engineer, he provides both theoretical knowledge and hands-on expertise in building functional robotic systems.",
                     credentials: [
-                        "Former Marketing Director at GrowthCorp",
-                        "Google Analytics and Ads Certified",
-                        "MBA with specialization in Digital Marketing",
-                        "Creator of the 'Freelancer's Marketing Playbook'"
+                        "Government of Kerala Polytechnic Electronics graduate",
+                        "Works as Robotics Engineer",
+                        "Experience in hardware design and prototyping",
+                        "Specializes in integrating sensors and control systems"
                     ],
-                    email: "sarah@skilltrai.com",
-                    calendar: "#schedule-sarah"
+                    email: "afnan@skilltrai.com",
+                    calendar: "#schedule-afnan",
+                    linkedin: "https://www.linkedin.com/in/afnanyusuf/"
                 },
                 {
                     id: 5,
-                    name: "Michael Chen",
-                    title: "Mobile Development Instructor",
-                    image: "michael.jpg",
+                    name: "Salman",
+                    title: "Robotics Trainer",
+                    image: "salman.jpg",
                     category: "tech",
-                    skills: ["iOS", "Android", "React Native", "Flutter"],
-                    bio: "Michael has been developing mobile applications since the early days of smartphones. His extensive experience across platforms makes him the ideal guide for aspiring mobile developers. His teaching emphasizes cross-platform development strategies and best practices for creating seamless user experiences across devices.",
+                    skills: ["Robotics Programming", "Electronics", "Sensor Integration", "Automation"],
+                    bio: "Salman specializes in teaching the programming and electronics aspects of robotics. His courses focus on integrating sensors, implementing control algorithms, and creating autonomous systems. Students benefit from his practical approach to solving complex robotics challenges.",
                     credentials: [
-                        "Developer of 10+ apps with millions of downloads",
-                        "Former Mobile Lead Developer at AppWorks",
-                        "Apple Developer Academy Graduate",
-                        "Google Developer Expert"
+                        "Expertise in robotics programming languages",
+                        "Experience with various robotics platforms and frameworks",
+                        "Background in electronics and circuit design",
+                        "Project portfolio including autonomous robots"
                     ],
-                    email: "michael@skilltrai.com",
-                    calendar: "#schedule-michael"
+                    email: "salman@skilltrai.com",
+                    calendar: "#schedule-salman",
+                    linkedin: "https://www.linkedin.com/"
                 },
+
+                // Data Analysis Trainers
                 {
                     id: 6,
-                    name: "Leila Patel",
-                    title: "Data Analytics Coach",
-                    image: "leila.jpg",
+                    name: "Ajvad",
+                    title: "Lead Data Analysis Trainer",
+                    image: "ajvad.jpg",
                     category: "data",
-                    skills: ["Data Visualization", "SQL", "Python", "Business Intelligence"],
-                    bio: "Leila bridges the gap between technical data skills and business applications. Her background in consulting has given her insight into how data drives decision-making across industries. Students in her courses learn not just how to analyze data, but how to communicate insights effectively to stakeholders.",
+                    skills: ["Data Science", "Python", "Statistical Analysis", "Machine Learning"],
+                    bio: "Ajvad leads our Data Analysis training program, bringing expertise in transforming raw data into actionable insights. With an MSc in Data Science and professional experience as an ML Engineer, he helps students develop the analytical skills needed to excel in data-driven roles.",
                     credentials: [
-                        "Former Data Consultant at Big4 Consulting",
-                        "Certified Data Scientist",
-                        "Master's in Statistics",
-                        "Creator of 'The Business Analyst's Toolkit'"
+                        "MSc Data Science graduate from Aligarh Muslim University",
+                        "Works as ML Engineer at ACMF Technologies",
+                        "Expertise in data cleaning, analysis, and visualization",
+                        "Experience implementing machine learning models for business problems"
                     ],
-                    email: "leila@skilltrai.com",
-                    calendar: "#schedule-leila"
+                    email: "ajvadk.ds@gmail.com",
+                    calendar: "#schedule-ajvad",
+                    linkedin: "https://www.linkedin.com/in/ajvad-k-6291311b1/"
+                },
+                {
+                    id: 7,
+                    name: "Hanoon",
+                    title: "Lead Data Analysis Trainer",
+                    image: "hanoon.jpg",
+                    category: "data",
+                    skills: ["Business Intelligence", "Data Visualization", "SQL", "Analytics"],
+                    bio: "Hanoon co-leads our Data Analysis program, focusing on the business intelligence and visualization aspects of data analytics. His courses emphasize transforming complex data into clear visual insights that drive business decisions and strategy development.",
+                    credentials: [
+                        "Expert in business intelligence tools and methodologies",
+                        "Experience in implementing data-driven solutions",
+                        "Background in database design and optimization",
+                        "Specializes in creating interactive dashboards"
+                    ],
+                    email: "hanoon@skilltrai.com",
+                    calendar: "#schedule-hanoon",
+                    linkedin: "https://www.linkedin.com/"
+                },
+
+                // UI/UX & Design Trainers
+                {
+                    id: 8,
+                    name: "Akshay",
+                    title: "Lead UI/UX Design Trainer",
+                    image: "akshay-design.jpg",
+                    category: "design",
+                    skills: ["UI Design", "UX Research", "Design Systems", "Prototyping"],
+                    bio: "Akshay leads our UI/UX Design program, bringing expertise in creating user-centered digital experiences. His courses cover the entire design process from research and wireframing to high-fidelity prototypes and design implementation, preparing students for successful careers in design.",
+                    credentials: [
+                        "Extensive portfolio of successful UI/UX projects",
+                        "Experience designing for web, mobile, and enterprise applications",
+                        "Expert in industry-standard design tools",
+                        "Background in design thinking methodologies"
+                    ],
+                    email: "akshay.design@skilltrai.com",
+                    calendar: "#schedule-akshay-design",
+                    linkedin: "https://www.linkedin.com/"
+                },
+                {
+                    id: 9,
+                    name: "Anas",
+                    title: "UI/UX Design Trainer",
+                    image: "anas.jpg",
+                    category: "design",
+                    skills: ["Interface Design", "Interactive Prototyping", "Visual Design", "User Testing"],
+                    bio: "Anas specializes in teaching the technical aspects of UI/UX design, focusing on creating visually appealing and highly functional interfaces. His courses emphasize practical skills that help students build impressive portfolios and transition into professional design roles.",
+                    credentials: [
+                        "Expertise in design software and prototyping tools",
+                        "Background in visual and interaction design",
+                        "Experience in conducting user research and testing",
+                        "Portfolio of successful design projects"
+                    ],
+                    email: "anas@skilltrai.com",
+                    calendar: "#schedule-anas",
+                    linkedin: "https://www.linkedin.com/"
+                },
+                {
+                    id: 10,
+                    name: "Shahad",
+                    title: "UI/UX Design Trainer",
+                    image: "shahad.jpg",
+                    category: "design",
+                    skills: ["User Experience", "Design Thinking", "Information Architecture", "Accessibility"],
+                    bio: "Shahad focuses on teaching the user experience aspects of design, emphasizing research, information architecture, and accessibility. Her courses help students develop the critical thinking skills needed to create inclusive designs that meet user needs while achieving business objectives.",
+                    credentials: [
+                        "Background in user-centered design methodologies",
+                        "Experience in information architecture and content strategy",
+                        "Specializes in accessible design practices",
+                        "Portfolio showcasing various digital product designs"
+                    ],
+                    email: "shahad@skilltrai.com",
+                    calendar: "#schedule-shahad",
+                    linkedin: "https://www.linkedin.com/"
+                },
+
+                // Video Training
+                {
+                    id: 11,
+                    name: "Afnan",
+                    title: "Lead Video Training",
+                    image: "afnan-video.jpg",
+                    category: "design",
+                    skills: ["Video Production", "Content Creation", "Editing", "Visual Storytelling"],
+                    bio: "Afnan leads our Video training program, teaching the art and technical skills of video production and content creation. His courses cover the entire video production process from planning and shooting to editing and distribution, preparing students for careers in digital content creation.",
+                    credentials: [
+                        "Experience in professional video production",
+                        "Expertise in video editing software and tools",
+                        "Background in storytelling and content strategy",
+                        "Portfolio of diverse video projects"
+                    ],
+                    email: "afnan@skilltrai.com",
+                    calendar: "#schedule-afnan-video",
+                    linkedin: "https://www.linkedin.com/in/afnanyusuf/"
+                },
+                {
+                    id: 12,
+                    name: "Shareef",
+                    title: "Video Training Specialist",
+                    image: "shareef.jpg",
+                    category: "design",
+                    skills: ["Video Editing", "Motion Graphics", "Content Strategy", "Digital Marketing"],
+                    bio: "Shareef specializes in teaching video editing and content strategy, helping students create engaging video content for various platforms. His courses emphasize both technical editing skills and strategic content planning to maximize audience engagement and achieve marketing objectives.",
+                    credentials: [
+                        "BTech CSE graduate from KTU",
+                        "Experience in digital content creation and marketing",
+                        "Expertise in video editing and post-production",
+                        "Background in developing content strategies"
+                    ],
+                    email: "shareefataz@gmail.com",
+                    calendar: "#schedule-shareef",
+                    linkedin: "https://www.linkedin.com/in/mohammed-shareef-at-58842123a/"
+                },
+
+                // Engineering Training
+                {
+                    id: 13,
+                    name: "Adil K",
+                    title: "Lead Engineering Trainer",
+                    image: "adil.jpg",
+                    category: "tech",
+                    skills: ["Software Engineering", "System Design", "DevOps", "Performance Optimization"],
+                    bio: "Adil leads our Engineering training program, focusing on software engineering principles, system design, and DevOps practices. His courses prepare students to build robust, scalable software systems that meet industry standards for performance, security, and maintainability.",
+                    credentials: [
+                        "Extensive experience in software engineering and system design",
+                        "Background in building enterprise-grade applications",
+                        "Expertise in development operations and CI/CD pipelines",
+                        "Experience mentoring junior engineering teams"
+                    ],
+                    email: "adil@skilltrai.com",
+                    calendar: "#schedule-adil",
+                    linkedin: "https://www.linkedin.com/"
+                },
+                {
+                    id: 14,
+                    name: "Ikhlas",
+                    title: "Engineering Trainer",
+                    image: "ikhlas-eng.jpg",
+                    category: "tech",
+                    skills: ["Software Architecture", "Full-Stack Development", "Cloud Infrastructure", "API Design"],
+                    bio: "Ikhlas brings his expertise in software architecture and full-stack development to our Engineering program. His courses focus on practical implementation of engineering principles, helping students build scalable, maintainable software systems that address real-world business needs.",
+                    credentials: [
+                        "Works as AI Engineer at Impex",
+                        "BTech CSE graduate from KTU",
+                        "Experience in full-stack development and cloud architecture",
+                        "Expertise in API design and implementation"
+                    ],
+                    email: "ikhlas110@gmail.com",
+                    calendar: "#schedule-ikhlas-eng",
+                    linkedin: "https://www.linkedin.com/in/ikhlas-pv/"
                 }
             ];
 
