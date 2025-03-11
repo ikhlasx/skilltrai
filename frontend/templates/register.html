@@ -145,48 +145,56 @@
             return cookieValue;
         }
 
-        // Admission Process Steps Component
+        // Updated AdmissionSteps Component
         const AdmissionSteps = () => (
             <div className="mb-16">
-                <h2 className="text-2xl font-bold mb-8 text-center text-gray-900">Our Admission Process</h2>
+                <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Our Admission Process</h2>
                 <div className="max-w-3xl mx-auto">
                     <div className="relative">
                         {/* Vertical line */}
-                        <div className="absolute left-8 md:left-16 top-0 bottom-0 w-1 bg-purple-200 hidden md:block"></div>
+                        <div className="absolute left-6 md:left-6 top-10 bottom-0 w-1 bg-purple-200 hidden md:block"></div>
 
                         {/* Steps */}
-                        <div className="space-y-12">
+                        <div className="space-y-16">
                             {/* Step 1 */}
-                            <div className="flex flex-col md:flex-row items-start">
-                                <div className="flex items-center justify-center w-16 h-16 bg-purple-600 text-white rounded-full text-xl font-bold mb-4 md:mb-0 z-10">1</div>
-                                <div className="md:ml-8 md:mt-4">
+                            <div className="flex items-start">
+                                <div className="flex-shrink-0">
+                                    <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold z-10">1</div>
+                                </div>
+                                <div className="ml-6">
                                     <h3 className="text-xl font-semibold mb-2 text-gray-900">Application</h3>
                                     <p className="text-gray-600">Fill out our comprehensive application form with your personal information, educational background, and career goals. This helps us understand your specific needs and aspirations.</p>
                                 </div>
                             </div>
 
                             {/* Step 2 */}
-                            <div className="flex flex-col md:flex-row items-start">
-                                <div className="flex items-center justify-center w-16 h-16 bg-purple-600 text-white rounded-full text-xl font-bold mb-4 md:mb-0 z-10">2</div>
-                                <div className="md:ml-8 md:mt-4">
+                            <div className="flex items-start">
+                                <div className="flex-shrink-0">
+                                    <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold z-10">2</div>
+                                </div>
+                                <div className="ml-6">
                                     <h3 className="text-xl font-semibold mb-2 text-gray-900">Assessment</h3>
                                     <p className="text-gray-600">Complete a brief assessment related to your chosen course. This assessment helps us gauge your current skill level and tailor the program to your learning needs. Don't worry - it's not a pass/fail test!</p>
                                 </div>
                             </div>
 
                             {/* Step 3 */}
-                            <div className="flex flex-col md:flex-row items-start">
-                                <div className="flex items-center justify-center w-16 h-16 bg-purple-600 text-white rounded-full text-xl font-bold mb-4 md:mb-0 z-10">3</div>
-                                <div className="md:ml-8 md:mt-4">
+                            <div className="flex items-start">
+                                <div className="flex-shrink-0">
+                                    <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold z-10">3</div>
+                                </div>
+                                <div className="ml-6">
                                     <h3 className="text-xl font-semibold mb-2 text-gray-900">Interview</h3>
                                     <p className="text-gray-600">Participate in a brief interview with one of our course advisors. This conversation helps us understand your motivation, learning style, and ensures the course is the right fit for your career goals.</p>
                                 </div>
                             </div>
 
                             {/* Step 4 */}
-                            <div className="flex flex-col md:flex-row items-start">
-                                <div className="flex items-center justify-center w-16 h-16 bg-purple-600 text-white rounded-full text-xl font-bold mb-4 md:mb-0 z-10">4</div>
-                                <div className="md:ml-8 md:mt-4">
+                            <div className="flex items-start">
+                                <div className="flex-shrink-0">
+                                    <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold z-10">4</div>
+                                </div>
+                                <div className="ml-6">
                                     <h3 className="text-xl font-semibold mb-2 text-gray-900">Enrollment</h3>
                                     <p className="text-gray-600">Once accepted, complete the enrollment process by confirming your participation and arranging payment or scholarship details. You'll receive all necessary course materials and instructions to begin your learning journey.</p>
                                 </div>

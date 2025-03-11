@@ -134,18 +134,20 @@
               <div className="py-20 bg-white">
                 <div className="container mx-auto px-6 max-w-6xl">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {/* Vision Section - Removed extra space */}
-                    <div className="bg-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow h-auto">
+                    {/* Vision Section - Making height match the Mission section */}
+                    <div className="bg-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow h-full flex flex-col">
                       <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
                       <p className="text-gray-700 text-lg leading-relaxed">
                         To empower individuals with the skills, knowledge, and mindset
                         needed to thrive in the independent digital workforce, creating a
                         global community of successful freelance professionals.
                       </p>
+                      {/* Adding flex-grow to push content to the top */}
+                      <div className="flex-grow"></div>
                     </div>
 
                     {/* Mission Section */}
-                    <div className="bg-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow h-auto">
+                    <div className="bg-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow h-full">
                       <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
                       <p className="text-gray-700 text-lg leading-relaxed mb-6">
                         Our mission is to provide comprehensive training that
@@ -156,32 +158,32 @@
 
                       <h3 className="text-xl font-semibold text-gray-900 mb-3">Core Objectives</h3>
                       <ul className="space-y-2 mb-6">
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 mt-2"></span>
                           <span className="text-gray-700">Deliver industry-relevant skills training</span>
                         </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 mt-2"></span>
                           <span className="text-gray-700">Foster independent work culture</span>
                         </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 mt-2"></span>
                           <span className="text-gray-700">Build professional excellence</span>
                         </li>
                       </ul>
 
                       <h3 className="text-xl font-semibold text-gray-900 mb-3">Values</h3>
                       <ul className="space-y-2">
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 mt-2"></span>
                           <span className="text-gray-700">Innovation in education</span>
                         </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 mt-2"></span>
                           <span className="text-gray-700">Practical skill development</span>
                         </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                        <li className="flex items-start">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-2 mt-2"></span>
                           <span className="text-gray-700">Student-centered growth</span>
                         </li>
                       </ul>
@@ -190,6 +192,7 @@
                 </div>
               </div>
             );
+
 
             const LearningApproach = () => (
                 <div className="py-16 bg-gradient-to-br from-white via-purple-50 to-white">
