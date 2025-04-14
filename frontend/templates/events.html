@@ -81,11 +81,7 @@
             return (
                 <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
                     <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-                        <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-purple-600 rounded-full"></div>
-                            <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
-                        </div>
-
+                        <img src="{% static 'images/logo.png' %}" alt="SkillTrai Logo" className="w-8 h-8"/>
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
                             <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>

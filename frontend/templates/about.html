@@ -32,18 +32,19 @@
             const Navigation = () => (
                 <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
                     <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-                        <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-purple-600 rounded-full"></div>
-                            <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
-                        </div>
+                        <img src="{% static 'images/logo.png' %}" alt="SkillTrai Logo" className="w-8 h-8"/>
 
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
                             <a href="/about" className="text-gray-900 font-medium">About</a>
-                            <a href="/trainers/" className="text-gray-600 hover:text-gray-900 transition-colors">Trainers</a>
-                            <a href="/events/" className="text-gray-600 hover:text-gray-900 transition-colors">Events</a>
-                            <a href="/courses/" className="text-gray-600 hover:text-gray-900 transition-colors">Courses</a>
-                            <a href="/register/" className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
+                            <a href="/trainers/"
+                               className="text-gray-600 hover:text-gray-900 transition-colors">Trainers</a>
+                            <a href="/events/"
+                               className="text-gray-600 hover:text-gray-900 transition-colors">Events</a>
+                            <a href="/courses/"
+                               className="text-gray-600 hover:text-gray-900 transition-colors">Courses</a>
+                            <a href="/register/"
+                               className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
                                 Register
                             </a>
                         </div>
@@ -54,12 +55,16 @@
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                         >
                             {isMenuOpen ? (
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                          d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
                             ) : (
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                          d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
                             )}
                         </button>
