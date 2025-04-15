@@ -27,15 +27,20 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        const AboutPage = () => {
-            const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+        const logoUrl = "{% static 'images/logo.png' %}";
+        const ModernLandingPage = () => {
+        const Navigation = () => {
 
-            // Navigation Component
-            const Navigation = () => (
+        const AboutPage = () => {
+            const [isOpen, setIsOpen] = React.useState(false);
+
+            return (
                 <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
-                    <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-                        <img src="{% static 'images/logo.png' %}" alt="SkillTrai Logo" className="h-12 md:h-20"
-                             style="max-height: 80px;"/>
+                    <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                        <div className="flex items-center space-x-2">
+                            <img src={logoUrl} alt="SkillTrai Logo" className="h-12 md:h-20" style={{maxHeight: "80px"}} />
+                            <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
+                        </div>
 
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
@@ -458,7 +463,7 @@
         ReactDOM.render(
             <AboutPage />,
             document.getElementById('root')
-        );
+        );};}
     </script>
 </body>
 </html>
