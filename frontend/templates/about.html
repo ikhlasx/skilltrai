@@ -26,13 +26,13 @@
 </head>
 <body>
     <div id="root"></div>
-<script type="text/babel">
+    <script type="text/babel">
     // At the top - create a variable for the logo path that Django will process
     const logoPath = "{% static 'images/logo.png' %}";
 
         const Navigation = () => {
             const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+        const AboutPage = () => {
             return (
                 <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
                     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -465,7 +465,7 @@
         ReactDOM.render(
             <AboutPage />,
             document.getElementById('root')
-        );
+        );}
     </script>
 </body>
 </html>
