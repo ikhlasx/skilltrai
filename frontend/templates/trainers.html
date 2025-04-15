@@ -63,19 +63,19 @@
 </head>
 <body>
     <div id="root"></div>
-    <script type="text/babel">
-        // Import React hooks
-        const { useState, useEffect } = React;
+<script type="text/babel">
+    // At the top - create a variable for the logo path that Django will process
+    const logoPath = "{% static 'images/logo.png' %}";
 
-        // Navigation component with responsive mobile menu
+    const ModernLandingPage = () => {
         const Navigation = () => {
-            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [isOpen, setIsOpen] = React.useState(false);
 
             return (
                 <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
                     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                         <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-purple-600 rounded-full"></div>
+                            <img src={logoPath} alt="SkillTrai Logo" className="h-12 md:h-20" />
                             <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
                         </div>
 
@@ -733,8 +733,9 @@
         // Render the app
         ReactDOM.render(
             <TrainersPage/>,
+            <ModernLandingPage />,
             document.getElementById('root')
-        );
+        );}
     </script>
 </body>
 </html>
