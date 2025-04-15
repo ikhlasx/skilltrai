@@ -76,16 +76,14 @@
     // At the top - create a variable for the logo path that Django will process
     const logoPath = "{% static 'images/logo.png' %}";
 
-    const ModernLandingPage = () => {
         const Navigation = () => {
-            const [isOpen, setIsOpen] = React.useState(false);
+            const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
             return (
                 <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
                     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                         <div className="flex items-center space-x-2">
-                            <img src={logoPath} alt="SkillTrai Logo" className="h-12 md:h-20" />
-                            <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
+                            <img src={logoPath} alt="SkillTrai Logo" className="h-12 md:h-20"/>
                         </div>
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
@@ -778,9 +776,8 @@
         // Render the app
         ReactDOM.render(
             <EventsPage/>,
-            <ModernLandingPage />,
             document.getElementById('root')
-        );}
+        );
     </script>
 </body>
 </html>
