@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillTrai - Registration</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -58,20 +60,18 @@
 </head>
 <body>
     <div id="root"></div>
-    <script type="text/babel">
-        // Import React hooks
-        const { useState } = React;
+<script type="text/babel">
+    // At the top - create a variable for the logo path that Django will process
+    const logoPath = "{% static 'images/logo.png' %}";
 
-        // Navigation component with responsive mobile menu
         const Navigation = () => {
-            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
             return (
                 <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
-                    <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+                    <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                         <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-purple-600 rounded-full"></div>
-                            <span className="text-gray-900 text-xl font-medium">SkillTrai</span>
+                            <img src={logoPath} alt="SkillTrai Logo" className="h-12 md:h-20"/>
                         </div>
 
                         {/* Desktop Navigation */}
