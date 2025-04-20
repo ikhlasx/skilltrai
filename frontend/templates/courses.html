@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,11 +60,12 @@
 <body>
     <div id="root"></div>
  <script type="text/babel">
+    const { useState } = React;
     // At the top - create a variable for the logo path that Django will process
     const logoPath = "{% static 'images/logo.png' %}";
 
         const Navigation = () => {
-            const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
 
             return (
                 <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
