@@ -60,13 +60,7 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #7c3aed;
         }
-        .timeline-line {
-          z-index: 1;
-        }
-        .step-number {
-          position: relative;
-          z-index: 2;
-        }
+
     </style>
 </head>
 <body>
@@ -165,74 +159,56 @@
             <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Our Admission Process</h2>
             <div className="max-w-3xl mx-auto">
                 <div className="relative">
-                    {/* Vertical line - positioned behind the circles */}
-                    <div className="absolute left-6 md:left-6 top-10 bottom-0 w-1 bg-purple-200 hidden md:block"
-                         style="z-index: 1;"></div>
+                    {/* No vertical line - we'll use a different technique */}
 
                     {/* Steps */}
                     <div className="space-y-16">
                         {/* Step 1 */}
                         <div className="flex items-start">
                             <div className="flex-shrink-0">
-                                <div
-                                    className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold"
-                                    style="z-index: 2; position: relative;">1
-                                </div>
+                                {/* Circle with number */}
+                                <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold">1</div>
+                                {/* Line below circle */}
+                                <div className="h-16 w-1 bg-purple-200 mx-auto mt-2 md:block hidden"></div>
                             </div>
                             <div className="ml-6">
                                 <h3 className="text-xl font-semibold mb-2 text-gray-900">Application</h3>
-                                <p className="text-gray-600">Fill out our comprehensive application form with your
-                                    personal information, educational background, and career goals. This helps us
-                                    understand your specific needs and aspirations.</p>
+                                <p className="text-gray-600">Fill out our comprehensive application form with your personal information, educational background, and career goals. This helps us understand your specific needs and aspirations.</p>
                             </div>
                         </div>
 
                         {/* Step 2 */}
                         <div className="flex items-start">
                             <div className="flex-shrink-0">
-                                <div
-                                    className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold"
-                                    style="z-index: 2; position: relative;">2
-                                </div>
+                                <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold">2</div>
+                                <div className="h-16 w-1 bg-purple-200 mx-auto mt-2 md:block hidden"></div>
                             </div>
                             <div className="ml-6">
                                 <h3 className="text-xl font-semibold mb-2 text-gray-900">Assessment</h3>
-                                <p className="text-gray-600">Complete a brief assessment related to your chosen course.
-                                    This assessment helps us gauge your current skill level and tailor the program to
-                                    your learning needs. Don't worry - it's not a pass/fail test!</p>
+                                <p className="text-gray-600">Complete a brief assessment related to your chosen course. This assessment helps us gauge your current skill level and tailor the program to your learning needs. Don't worry - it's not a pass/fail test!</p>
                             </div>
                         </div>
 
                         {/* Step 3 */}
                         <div className="flex items-start">
                             <div className="flex-shrink-0">
-                                <div
-                                    className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold"
-                                    style="z-index: 2; position: relative;">3
-                                </div>
+                                <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold">3</div>
+                                <div className="h-16 w-1 bg-purple-200 mx-auto mt-2 md:block hidden"></div>
                             </div>
                             <div className="ml-6">
                                 <h3 className="text-xl font-semibold mb-2 text-gray-900">Interview</h3>
-                                <p className="text-gray-600">Participate in a brief interview with one of our course
-                                    advisors. This conversation helps us understand your motivation, learning style, and
-                                    ensures the course is the right fit for your career goals.</p>
+                                <p className="text-gray-600">Participate in a brief interview with one of our course advisors. This conversation helps us understand your motivation, learning style, and ensures the course is the right fit for your career goals.</p>
                             </div>
                         </div>
 
-                        {/* Step 4 */}
+                        {/* Step 4 - last step doesn't need a line */}
                         <div className="flex items-start">
                             <div className="flex-shrink-0">
-                                <div
-                                    className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold"
-                                    style="z-index: 2; position: relative;">4
-                                </div>
+                                <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-full text-xl font-bold">4</div>
                             </div>
                             <div className="ml-6">
                                 <h3 className="text-xl font-semibold mb-2 text-gray-900">Enrollment</h3>
-                                <p className="text-gray-600">Once accepted, complete the enrollment process by
-                                    confirming your participation and arranging payment or scholarship details. You'll
-                                    receive all necessary course materials and instructions to begin your learning
-                                    journey.</p>
+                                <p className="text-gray-600">Once accepted, complete the enrollment process by confirming your participation and arranging payment or scholarship details. You'll receive all necessary course materials and instructions to begin your learning journey.</p>
                             </div>
                         </div>
                     </div>
