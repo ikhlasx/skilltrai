@@ -308,7 +308,9 @@
                                         <div
                                             key={course.id}
                                             className={`course-card bg-white rounded-2xl overflow-hidden shadow-lg animate-fadeIn`}
-                                            style={{animationDelay: (index * 0.1) + 's'}}
+                                            {% verbatim %}
+                                            style={{animationDelay: `${index * 0.1}s`}}
+                                            {% endverbatim %}
                                             onClick={() => handleCourseClick(course.id)}
                                         >
                                             <div className="relative h-48 overflow-hidden">
