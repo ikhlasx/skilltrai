@@ -12,8 +12,6 @@
     <meta name="apple-mobile-web-app-title" content="Skilltrai" />
     <link rel="manifest" href="{% static 'images/site.webmanifest' %}" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <meta name="theme-color" content="#000000">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -41,27 +39,47 @@
         }
     </script>
     <style>
+        /* Base styles */
         body {
-            background-color: #ffffff;
+            background-color: #f3f4f6;
+            min-height: 100vh;
         }
 
-        /* Custom scrollbar for light theme */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+        /* Card animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        ::-webkit-scrollbar-track {
-            background: #f3f4f6;
+        .animate-fadeIn {
+            animation: fadeIn 0.4s ease-out forwards;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #8b5cf6;
-            border-radius: 4px;
+        /* Trainer card hover effects */
+        .trainer-card {
+            transition: all 0.3s ease;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #7c3aed;
+        .trainer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trainer-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .trainer-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Hide scrollbar styles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 
@@ -69,8 +87,17 @@
     <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 
-    <!-- Script to provide static URLs to JavaScript (MOVED UP) -->
+    <!-- Load your React components -->
+    <script src="{% static 'js/trainers.js' %}"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- React will render content here -->
+    </div>
+
+    <!-- Script to provide static URLs to JavaScript -->
     <script>
+        // Create a global object to store your Django static URLs
         window.staticUrls = {
             logo: "{% static 'images/logo.png' %}",
             trainerImages: {
@@ -84,17 +111,17 @@
                 ajvad: "{% static 'images/ajvad.jpg' %}",
                 hanoon: "{% static 'images/hanoon.jpg' %}",
                 shareef: "{% static 'images/shareef.jpg' %}",
-                adil: "{% static 'images/adil.jpg' %}",
-                salman: "{% static 'images/salman.jpg' %}",
-                shahad: "{% static 'images/shahad.jpg' %}"
+                adil: "{% static 'images/adil.jpg' %}"
+            },
+            courseImages: {
+                aiDeveloper: "{% static 'images/ai-developer.jpg' %}",
+                design: "{% static 'images/design.jpg' %}",
+                robotics: "{% static 'images/robotics.jpg' %}",
+                dataAnalysis: "{% static 'images/data-analysis.jpg' %}",
+                content: "{% static 'images/content.jpg' %}",
+                aiEngineer: "{% static 'images/ai-engineer.jpg' %}"
             }
         };
     </script>
-
-    <!-- Load your React components (MUST BE AFTER staticUrls) -->
-    <script src="{% static 'js/pages/trainers.js' %}"></script>
-</head>
-<body>
-    <div id="root"></div>
 </body>
 </html>
