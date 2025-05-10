@@ -1,4 +1,5 @@
 // trainers.js - Complete script for trainers page
+// This file should be placed in your frontend/static/js/pages/ directory
 
 // Wait for DOM to be loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // TrainersPage Component
     function TrainersPage() {
-        // State for expanded trainer and filter
         const [expandedTrainer, setExpandedTrainer] = React.useState(null);
         const [activeFilter, setActiveFilter] = React.useState('all');
 
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
-    // Trainer Filter Component - Responsive scrollable on mobile
+    // Trainer Filter Component
     function TrainerFilters({ activeFilter, setActiveFilter, filters }) {
         return React.createElement(
             'div',
@@ -150,14 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
-    // Trainer Profile Component
-    function TrainerProfile({ trainer, isExpanded, toggleExpand }) {
+    // Trainer Card Component
+    function TrainerCard({ trainer, isExpanded, toggleExpand }) {
         // Get trainer image from staticUrls or use placeholder
-        const trainerImage = staticUrls.trainerImages && staticUrls.trainerImages[trainer.imageKey]
-            ? staticUrls.trainerImages[trainer.imageKey]
-            : '/api/placeholder/400/320';
+        const getTrainerImage = () => {
+            const images = window.staticUrls?.trainerImages || {};
+            return images[trainer.imageKey] || '/api/placeholder/400/320';
+        };
 
-        // Handle image error
+        // Handle image errors
         const handleImageError = (e) => {
             e.target.src = '/api/placeholder/400/320';
         };
@@ -170,9 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 'div',
                 { className: 'relative' },
                 React.createElement('img', {
-                    src: trainerImage,
+                    src: getTrainerImage(),
                     alt: trainer.name,
-                    className: 'w-full h-64 object-cover object-center',
+                    className: 'w-full h-64 object-cover',
                     onError: handleImageError
                 }),
                 React.createElement('div', {
@@ -212,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 React.createElement(
                     'button',
                     {
-                        onClick: () => toggleExpand(trainer.id),
+                        onClick: toggleExpand,
                         className: 'text-purple-600 hover:text-purple-700 text-sm font-medium flex items-center'
                     },
                     isExpanded ? 'Show Less' : 'Read More',
@@ -322,12 +323,12 @@ document.addEventListener('DOMContentLoaded', function() {
             'div',
             { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16' },
             filteredTrainers.map(trainer => React.createElement(
-                TrainerProfile,
+                TrainerCard,
                 {
                     key: trainer.id,
                     trainer: trainer,
                     isExpanded: expandedTrainer === trainer.id,
-                    toggleExpand: toggleExpand
+                    toggleExpand: () => toggleExpand(trainer.id)
                 }
             ))
         );
@@ -432,25 +433,25 @@ document.addEventListener('DOMContentLoaded', function() {
     function Testimonials() {
         return React.createElement(
             'div',
-            { className: 'mb-16' },
-            React.createElement('h2', { className: 'text-xl md:text-2xl font-bold mb-8 text-center' }, 'What Students Say About Our Trainers'),
+            {className: 'mb-16'},
+            React.createElement('h2', {className: 'text-xl md:text-2xl font-bold mb-8 text-center'}, 'What Students Say About Our Trainers'),
             React.createElement(
                 'div',
-                { className: 'grid grid-cols-1 md:grid-cols-3 gap-6' },
+                {className: 'grid grid-cols-1 md:grid-cols-3 gap-6'},
                 // Testimonial 1
                 React.createElement(
                     'div',
-                    { className: 'bg-white shadow-lg rounded-xl p-6' },
+                    {className: 'bg-white shadow-lg rounded-xl p-6'},
                     React.createElement(
                         'div',
-                        { className: 'flex items-start gap-4 mb-4' },
-                        React.createElement('div', { className: 'w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex-shrink-0' }),
+                        {className: 'flex items-start gap-4 mb-4'},
+                        React.createElement('div', {className: 'w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex-shrink-0'}),
                         React.createElement(
                             'div',
                             null,
                             React.createElement(
                                 'div',
-                                { className: 'flex space-x-1 mb-1' },
+                                {className: 'flex space-x-1 mb-1'},
                                 [...Array(5)].map((_, i) => React.createElement(
                                     'svg',
                                     {
@@ -464,30 +465,30 @@ document.addEventListener('DOMContentLoaded', function() {
                                     })
                                 ))
                             ),
-                            React.createElement('h4', { className: 'font-medium text-gray-900' }, 'Alex P.'),
-                            React.createElement('p', { className: 'text-sm text-purple-600' }, 'AI Development Graduate')
+                            React.createElement('h4', {className: 'font-medium text-gray-900'}, 'Alex P.'),
+                            React.createElement('p', {className: 'text-sm text-purple-600'}, 'AI Development Graduate')
                         )
                     ),
                     React.createElement(
                         'p',
-                        { className: 'text-gray-600 italic' },
+                        {className: 'text-gray-600 italic'},
                         '"Ikhlas doesn\'t just teach code, he teaches you how to think like a developer. His real-world examples and patient guidance made all the difference in my journey."'
                     )
                 ),
                 // Testimonial 2
                 React.createElement(
                     'div',
-                    { className: 'bg-white shadow-lg rounded-xl p-6' },
+                    {className: 'bg-white shadow-lg rounded-xl p-6'},
                     React.createElement(
                         'div',
-                        { className: 'flex items-start gap-4 mb-4' },
-                        React.createElement('div', { className: 'w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex-shrink-0' }),
+                        {className: 'flex items-start gap-4 mb-4'},
+                        React.createElement('div', {className: 'w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex-shrink-0'}),
                         React.createElement(
                             'div',
                             null,
                             React.createElement(
                                 'div',
-                                { className: 'flex space-x-1 mb-1' },
+                                {className: 'flex space-x-1 mb-1'},
                                 [...Array(5)].map((_, i) => React.createElement(
                                     'svg',
                                     {
@@ -501,30 +502,30 @@ document.addEventListener('DOMContentLoaded', function() {
                                     })
                                 ))
                             ),
-                            React.createElement('h4', { className: 'font-medium text-gray-900' }, 'Maya T.'),
-                            React.createElement('p', { className: 'text-sm text-purple-600' }, 'UI/UX Design Student')
+                            React.createElement('h4', {className: 'font-medium text-gray-900'}, 'Maya T.'),
+                            React.createElement('p', {className: 'text-sm text-purple-600'}, 'UI/UX Design Student')
                         )
                     ),
                     React.createElement(
                         'p',
-                        { className: 'text-gray-600 italic' },
+                        {className: 'text-gray-600 italic'},
                         '"Akshay has an amazing eye for design and an even better ability to explain complex concepts. My portfolio improved dramatically under his mentorship."'
                     )
                 ),
                 // Testimonial 3
                 React.createElement(
                     'div',
-                    { className: 'bg-white shadow-lg rounded-xl p-6' },
+                    {className: 'bg-white shadow-lg rounded-xl p-6'},
                     React.createElement(
                         'div',
-                        { className: 'flex items-start gap-4 mb-4' },
-                        React.createElement('div', { className: 'w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex-shrink-0' }),
+                        {className: 'flex items-start gap-4 mb-4'},
+                        React.createElement('div', {className: 'w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex-shrink-0'}),
                         React.createElement(
                             'div',
                             null,
                             React.createElement(
                                 'div',
-                                { className: 'flex space-x-1 mb-1' },
+                                {className: 'flex space-x-1 mb-1'},
                                 [...Array(5)].map((_, i) => React.createElement(
                                     'svg',
                                     {
@@ -538,21 +539,20 @@ document.addEventListener('DOMContentLoaded', function() {
                                     })
                                 ))
                             ),
-                            React.createElement('h4', { className: 'font-medium text-gray-900' }, 'Jordan K.'),
-                            React.createElement('p', { className: 'text-sm text-purple-600' }, 'Data Analysis Graduate')
+                            React.createElement('h4', {className: 'font-medium text-gray-900'}, 'Jordan K.'),
+                            React.createElement('p', {className: 'text-sm text-purple-600'}, 'Data Analysis Graduate')
                         )
                     ),
                     React.createElement(
                         'p',
-                        { className: 'text-gray-600 italic' },
+                        {className: 'text-gray-600 italic'},
                         '"Ajvad makes data analysis approachable even for beginners. His passion for the subject is contagious, and his mentorship has been invaluable to my career."'
                     )
                 )
             )
         );
     }
-
-    // Footer Component
+        // Footer Component
     function Footer() {
         return React.createElement(
             'div',
@@ -647,24 +647,6 @@ document.addEventListener('DOMContentLoaded', function() {
             calendar: "#schedule-afnan",
             linkedin: "https://www.linkedin.com/in/afnanyusuf/"
         },
-        {
-            id: 5,
-            name: "Salman",
-            title: "Robotics Trainer",
-            imageKey: "salman",
-            category: "tech",
-            skills: ["Robotics Programming", "Electronics", "Sensor Integration", "Automation"],
-            bio: "Salman specializes in teaching the programming and electronics aspects of robotics. His courses focus on integrating sensors, implementing control algorithms, and creating autonomous systems. Students benefit from his practical approach to solving complex robotics challenges.",
-            credentials: [
-                "Expertise in robotics programming languages",
-                "Experience with various robotics platforms and frameworks",
-                "Background in electronics and circuit design",
-                "Project portfolio including autonomous robots"
-            ],
-            email: "salman@skilltrai.com",
-            calendar: "#schedule-salman",
-            linkedin: "https://www.linkedin.com/"
-        },
 
         // Data Analysis Trainers
         {
@@ -741,26 +723,8 @@ document.addEventListener('DOMContentLoaded', function() {
             calendar: "#schedule-anas",
             linkedin: "https://www.linkedin.com/"
         },
-        {
-            id: 10,
-            name: "Shahad",
-            title: "UI/UX Design Trainer",
-            imageKey: "shahad",
-            category: "design",
-            skills: ["User Experience", "Design Thinking", "Information Architecture", "Accessibility"],
-            bio: "Shahad focuses on teaching the user experience aspects of design, emphasizing research, information architecture, and accessibility. Her courses help students develop the critical thinking skills needed to create inclusive designs that meet user needs while achieving business objectives.",
-            credentials: [
-                "Background in user-centered design methodologies",
-                "Experience in information architecture and content strategy",
-                "Specializes in accessible design practices",
-                "Portfolio showcasing various digital product designs"
-            ],
-            email: "shahad@skilltrai.com",
-            calendar: "#schedule-shahad",
-            linkedin: "https://www.linkedin.com/"
-        },
 
-        // Video Training
+        // Video and Content Creation Trainers
         {
             id: 11,
             name: "Afnan",
@@ -798,7 +762,7 @@ document.addEventListener('DOMContentLoaded', function() {
             linkedin: "https://www.linkedin.com/in/mohammed-shareef-at-58842123a/"
         },
 
-        // Engineering Training
+        // Engineering Trainer
         {
             id: 13,
             name: "Adil K",
