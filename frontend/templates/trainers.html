@@ -81,6 +81,24 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+            nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav .hidden.md\:flex {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @media (max-width: 1200px) {
+        nav .hidden.md\:flex {
+            position: static;
+            transform: none;
+        }
+    }
     </style>
 
     <!-- React and React DOM -->
