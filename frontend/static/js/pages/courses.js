@@ -26,7 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Navigation Component
   function Navigation() {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = React.useState(false);
+    const currentPath = window.location.pathname;
+
+    const isActive = (path) => {
+      return currentPath === path ? 'text-purple-600 font-semibold' : 'text-gray-600 hover:text-gray-900';
+    };
 
     return React.createElement(
       'nav',
@@ -38,46 +43,62 @@ document.addEventListener('DOMContentLoaded', function() {
         React.createElement(
           'div',
           { className: 'flex items-center space-x-2' },
-          React.createElement('img', { src: logoPath, alt: 'SkillTrai Logo', className: 'h-10 md:h-16' })
+          React.createElement('a', 
+            { href: '/' },
+            React.createElement('img', { src: logoPath, alt: 'SkillTrai Logo', className: 'h-12 md:h-20' })
+          )
         ),
         // Desktop navigation
         React.createElement(
           'div',
           { className: 'hidden md:flex items-center space-x-8' },
-          React.createElement('a', { href: '/', className: 'text-gray-600 hover:text-gray-900 transition-colors' }, 'Home'),
-          React.createElement('a', { href: '/courses/', className: 'text-gray-900 font-medium' }, 'Courses'),
-          React.createElement('a', { href: '/trainers/', className: 'text-gray-600 hover:text-gray-900 transition-colors' }, 'Trainers'),
-          React.createElement('a', { href: '/events/', className: 'text-gray-600 hover:text-gray-900 transition-colors' }, 'Events'),
-          React.createElement('a', { href: '/register/', className: 'bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors' }, 'Register')
+          React.createElement('a', { href: '/about', className: isActive('/about') }, 'About'),
+          React.createElement('a', { href: '/trainers/', className: isActive('/trainers/') }, 'Trainers'),
+          React.createElement('a', { href: '/courses/', className: isActive('/courses/') }, 'Courses'),
+          React.createElement('a', { href: '/events/', className: isActive('/events/') }, 'Events')
+        ),
+        // Register button
+        React.createElement(
+          'div',
+          { className: 'hidden md:block' },
+          React.createElement('a', {
+            href: '/register/',
+            className: 'bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700'
+          }, 'Register')
         ),
         // Mobile menu button
         React.createElement(
           'button',
           {
-            className: 'md:hidden text-gray-900',
-            onClick: () => setIsMenuOpen(!isMenuOpen)
+            onClick: () => setIsOpen(!isOpen),
+            className: 'md:hidden flex flex-col justify-center items-center gap-1.5'
           },
-          isMenuOpen
-            ? React.createElement('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' },
-                React.createElement('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M6 18L18 6M6 6l12 12' })
-              )
-            : React.createElement('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' },
-                React.createElement('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M4 6h16M4 12h16M4 18h16' })
-              )
+          React.createElement('span', {
+            className: `block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`
+          }),
+          React.createElement('span', {
+            className: `block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`
+          }),
+          React.createElement('span', {
+            className: `block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`
+          })
         )
       ),
       // Mobile menu
-      isMenuOpen && React.createElement(
+      isOpen && React.createElement(
         'div',
-        { className: 'md:hidden bg-white shadow-lg py-4' },
+        { className: 'absolute top-full left-0 right-0 bg-white shadow-lg md:hidden' },
         React.createElement(
           'div',
-          { className: 'container mx-auto px-4 flex flex-col space-y-4' },
-          React.createElement('a', { href: '/', className: 'text-gray-600 hover:text-gray-900 py-2 transition-colors' }, 'Home'),
-          React.createElement('a', { href: '/courses/', className: 'text-gray-900 font-medium py-2' }, 'Courses'),
-          React.createElement('a', { href: '/trainers/', className: 'text-gray-600 hover:text-gray-900 py-2 transition-colors' }, 'Trainers'),
-          React.createElement('a', { href: '/events/', className: 'text-gray-600 hover:text-gray-900 py-2 transition-colors' }, 'Events'),
-          React.createElement('a', { href: '/register/', className: 'bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-full text-center transition-colors' }, 'Register')
+          { className: 'flex flex-col items-center space-y-6 py-8' },
+          React.createElement('a', { href: '/about', className: isActive('/about') }, 'About'),
+          React.createElement('a', { href: '/trainers/', className: isActive('/trainers/') }, 'Trainers'),
+          React.createElement('a', { href: '/courses/', className: isActive('/courses/') }, 'Courses'),
+          React.createElement('a', { href: '/events/', className: isActive('/events/') }, 'Events'),
+          React.createElement('a', {
+            href: '/register/',
+            className: 'bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-3/4'
+          }, 'Register')
         )
       )
     );
@@ -249,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // For fallback images if course images don't exist
-    const fallbackImg = '/api/placeholder/400/600';
+    const fallbackImg = 'https://picsum.photos/400/600';
 
     // Animation handling with concatenation instead of template literals
     const getAnimationStyle = (index) => {

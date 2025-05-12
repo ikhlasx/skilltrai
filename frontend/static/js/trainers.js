@@ -27,6 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Navigation Component
   function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const currentPath = window.location.pathname;
+
+    const isActive = (path) => {
+      const normalizedPath = path.endsWith('/') ? path.slice(0, -1) : path;
+      const normalizedCurrentPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+      return normalizedCurrentPath === normalizedPath ? 'text-purple-600 font-semibold' : 'text-gray-600 hover:text-gray-900';
+    };
 
     return React.createElement(
       'nav',
@@ -38,17 +45,31 @@ document.addEventListener('DOMContentLoaded', function() {
         React.createElement(
           'div',
           { className: 'flex items-center space-x-2' },
-          React.createElement('img', { src: logoPath, alt: 'SkillTrai Logo', className: 'h-10 md:h-16' })
+          React.createElement('a', { href: '/' },
+            React.createElement('img', { src: logoPath, alt: 'SkillTrai Logo', className: 'h-12 md:h-20' })
+          )
         ),
         // Desktop navigation
         React.createElement(
           'div',
-          { className: 'hidden md:flex items-center space-x-8' },
-          React.createElement('a', { href: '/', className: 'text-gray-600 hover:text-gray-900 transition-colors' }, 'Home'),
-          React.createElement('a', { href: '/courses/', className: 'text-gray-600 hover:text-gray-900 transition-colors' }, 'Courses'),
-          React.createElement('a', { href: '/trainers/', className: 'text-gray-900 font-medium' }, 'Trainers'),
-          React.createElement('a', { href: '/events/', className: 'text-gray-600 hover:text-gray-900 transition-colors' }, 'Events'),
-          React.createElement('a', { href: '/register/', className: 'bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors' }, 'Register')
+          { className: 'hidden md:flex items-center justify-center flex-1' },
+          React.createElement(
+            'div',
+            { className: 'flex items-center space-x-8' },
+            React.createElement('a', { href: '/about', className: isActive('/about') }, 'About'),
+            React.createElement('a', { href: '/trainers/', className: isActive('/trainers/') }, 'Trainers'),
+            React.createElement('a', { href: '/courses/', className: isActive('/courses/') }, 'Courses'),
+            React.createElement('a', { href: '/events/', className: isActive('/events/') }, 'Events')
+          )
+        ),
+        // Register Button
+        React.createElement(
+          'div',
+          { className: 'hidden md:block' },
+          React.createElement('a', {
+            href: '/register/',
+            className: 'bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors'
+          }, 'Register')
         ),
         // Mobile menu button
         React.createElement(
@@ -73,10 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
         React.createElement(
           'div',
           { className: 'container mx-auto px-4 flex flex-col space-y-4' },
-          React.createElement('a', { href: '/', className: 'text-gray-600 hover:text-gray-900 py-2 transition-colors' }, 'Home'),
-          React.createElement('a', { href: '/courses/', className: 'text-gray-600 hover:text-gray-900 py-2 transition-colors' }, 'Courses'),
-          React.createElement('a', { href: '/trainers/', className: 'text-gray-900 font-medium py-2' }, 'Trainers'),
-          React.createElement('a', { href: '/events/', className: 'text-gray-600 hover:text-gray-900 py-2 transition-colors' }, 'Events'),
+          React.createElement('a', { href: '/about', className: isActive('/about') }, 'About'),
+          React.createElement('a', { href: '/trainers/', className: isActive('/trainers/') }, 'Trainers'),
+          React.createElement('a', { href: '/courses/', className: isActive('/courses/') }, 'Courses'),
+          React.createElement('a', { href: '/events/', className: isActive('/events/') }, 'Events'),
           React.createElement('a', { href: '/register/', className: 'bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 w-full text-center transition-colors' }, 'Register')
         )
       )
@@ -90,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const [animateDetail, setAnimateDetail] = React.useState(false);
 
     // For fallback images if trainer images don't exist
-    const fallbackImg = '/api/placeholder/400/600';
+    const fallbackImg = 'https://picsum.photos/400/600';
 
     // Trainer data with static URLs from Django
     const trainers = [
